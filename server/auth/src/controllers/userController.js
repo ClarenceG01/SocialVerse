@@ -6,13 +6,15 @@ const sendMail = require("../utils/sendMail");
 const { getUserByEmail } = require("../utils/getUserByEmail");
 const { getUserByUsername } = require("../utils/getUserByUsername");
 
+// Register
 async function userRegister(req, res) {
   try {
     let user = req.body;
     let encrypted_password = await bcrypt.hash(user.password, 8);
-    let sql = await mssql.connect(config);
-    if (sql.connected) {
-      let results = await sql
+
+    let pool = req.pool;
+    if (pool.connected) {
+      let results = await pool
         .request()
         .input("full_name", user.full_name)
         .input("email", user.email)
@@ -36,16 +38,17 @@ async function userRegister(req, res) {
       res.json(`user ${user.username} added`);
     }
   } catch (error) {
-    res.send(error.originalError.info.message);
-    console.log(error.originalError.info.message);
+    res.send(error);
+    console.log(error);
   }
 }
 async function userLogin(req, res) {
   let { email, username, password } = req.body;
-  console.log(`1st username is ${username}`);
+
+  let pool = req.pool;
   try {
     if (email == undefined) {
-      let results = await getUserByUsername(username);
+      let results = await getUserByUsername(username, pool);
       let is_match = await bcrypt.compare(password, results.password);
       if (is_match) {
         req.session.authorized = true;
@@ -58,7 +61,7 @@ async function userLogin(req, res) {
         res.status(401).json({ message: "Login failed" });
       }
     } else if (username == undefined) {
-      let results = await getUserByEmail(email);
+      let results = await getUserByEmail(email, pool);
       let is_match = await bcrypt.compare(password, results.password);
       if (is_match) {
         req.session.authorized = true;
@@ -76,6 +79,7 @@ async function userLogin(req, res) {
   }
 }
 async function userLogout(req, res) {
+  console.log(req.pool.connected);
   try {
     req.session.destroy();
     res.status(200).json({ message: "Logout successful" });
