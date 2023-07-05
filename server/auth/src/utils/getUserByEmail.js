@@ -1,11 +1,7 @@
-const mssql = require("mssql");
-const config = require("../config/config");
-
-async function getUserByEmail(email) {
+async function getUserByEmail(email, pool) {
   try {
-    let sql = await mssql.connect(config);
-    if (sql.connected) {
-      let results = await sql
+    if (pool.connected) {
+      let results = await pool
         .request()
         .input("email", email)
         .execute("GetUserByEmail");
@@ -13,7 +9,7 @@ async function getUserByEmail(email) {
       return results.recordset[0];
     }
   } catch (error) {
-    console.log(error.originalError.info.message);
+    console.log(error);
   }
 }
 
