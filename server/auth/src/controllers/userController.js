@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const createMarkup = require("../utils/createMarkup");
 const sendMail = require("../utils/sendMail");
 const { getUserByEmail } = require("../utils/getUserByEmail");
-const session = require("express-session");
+const { getUserByUsername } = require("../utils/getUserByUsername");
 
 async function userRegister(req, res) {
   try {
@@ -41,19 +41,35 @@ async function userRegister(req, res) {
   }
 }
 async function userLogin(req, res) {
-  let { email, password } = req.body;
+  let { email, username, password } = req.body;
+  console.log(`1st username is ${username}`);
   try {
-    let results = await getUserByEmail(email);
-    let is_match = await bcrypt.compare(password, results.password);
-    if (is_match) {
-      req.session.authorized = true;
-      req.session.user = results;
-      res.status(200).json({
-        message: "Login successful",
-        results: [req.session, req.sessionID],
-      });
-    } else {
-      res.status(401).json({ message: "Login failed" });
+    if (email == undefined) {
+      let results = await getUserByUsername(username);
+      let is_match = await bcrypt.compare(password, results.password);
+      if (is_match) {
+        req.session.authorized = true;
+        req.session.user = results;
+        res.status(200).json({
+          message: "Login successful",
+          results: [req.session, req.sessionID],
+        });
+      } else {
+        res.status(401).json({ message: "Login failed" });
+      }
+    } else if (username == undefined) {
+      let results = await getUserByEmail(email);
+      let is_match = await bcrypt.compare(password, results.password);
+      if (is_match) {
+        req.session.authorized = true;
+        req.session.user = results;
+        res.status(200).json({
+          message: "Login successful",
+          results: [req.session, req.sessionID],
+        });
+      } else {
+        res.status(401).json({ message: "Login failed" });
+      }
     }
   } catch (error) {
     console.log(error);
