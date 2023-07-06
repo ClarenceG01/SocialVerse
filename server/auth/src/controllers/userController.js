@@ -1,5 +1,3 @@
-const mssql = require("mssql");
-const config = require("../config/config");
 const bcrypt = require("bcrypt");
 const createMarkup = require("../utils/createMarkup");
 const sendMail = require("../utils/sendMail");

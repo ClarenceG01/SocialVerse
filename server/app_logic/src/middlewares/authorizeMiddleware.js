@@ -1,5 +1,4 @@
 const { createClient } = require("redis");
-const { RedisStore } = require("connect-redis").default;
 
 async function authorizeSession(req, res, next) {
   try {
@@ -11,8 +10,8 @@ async function authorizeSession(req, res, next) {
     let session = await redisClient.get(sessionID);
     let real_session = JSON.parse(session);
     const authorized = real_session?.authorized;
-    console.log(authorized);
     if (session && authorized) {
+      req.session = real_session;
       next();
     } else {
       res.status(403).json({

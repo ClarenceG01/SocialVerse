@@ -5,7 +5,6 @@ async function getUserByUsername(username, pool) {
         .request()
         .input("username", username)
         .execute("GetUserByUsername");
-      console.log(results);
       return results.recordset[0];
     }
   } catch (error) {

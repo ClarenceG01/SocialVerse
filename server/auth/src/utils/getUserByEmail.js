@@ -5,7 +5,6 @@ async function getUserByEmail(email, pool) {
         .request()
         .input("email", email)
         .execute("GetUserByEmail");
-      console.log(results);
       return results.recordset[0];
     }
   } catch (error) {
