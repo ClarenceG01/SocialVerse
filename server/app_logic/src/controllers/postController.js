@@ -1,5 +1,4 @@
 const { createClient } = require("redis");
-// account user posts
 async function getUserPosts(req, res, next) {
   try {
     const { pool } = req;
