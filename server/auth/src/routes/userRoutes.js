@@ -12,4 +12,4 @@ userRoute.post("/register", newUserMiddleware, userRegister);
 userRoute.post("/login", userLogin);
 userRoute.get("/logout", userLogout);
 
-module.exports = userRoute;
+module.exports = { userRoute };

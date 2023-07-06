@@ -1,5 +1,5 @@
 function authorizeSession(req, res, next) {
-  const authorized = req.session.authorized;
+  const authorized = req.session?.authorized;
   if (req.session.user && authorized) {
     next();
   } else {
