@@ -7,6 +7,8 @@ const {
   getSinglePost,
   deletePost,
   createPost,
+  likePost,
+  commentPost,
 } = require("../controllers/postController");
 const { authorizeSession } = require("../middlewares/authorizeMiddleware");
 
@@ -16,4 +18,6 @@ postRoute.get("/followingposts", authorizeSession, getFeedPosts);
 postRoute.get("/singlepost/:id", authorizeSession, getSinglePost);
 postRoute.put("/deletepost", authorizeSession, deletePost);
 postRoute.post("/createpost", authorizeSession, createPost);
+postRoute.post("/likepost", authorizeSession, likePost);
+postRoute.post("/commentpost", authorizeSession, commentPost);
 module.exports = { postRoute };
