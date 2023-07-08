@@ -18,7 +18,9 @@ async function startApp() {
     app.get("/", (req, res) => {
       res.send("Hello World");
     });
-
+    app.get("*", (req, res) => {
+      res.status(404).json({ message: "Page not found" });
+    });
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
