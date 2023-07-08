@@ -23,7 +23,7 @@ async function getUserPosts(req, res, next) {
     console.log(error);
   }
 }
-// posts feed (posts of the followers of the logged in user)
+// posts feed (posts of the following of the logged in user)
 async function getFeedPosts(req, res, next) {
   try {
     const { pool } = req;
@@ -33,7 +33,7 @@ async function getFeedPosts(req, res, next) {
       let results = await pool
         .request()
         .input("user_id", user_id)
-        .execute("GetFollowedUsersPosts");
+        .execute("GetFollowingUsersPosts");
       res.status(200).json({
         message: "Posts retrieved",
         results: results.recordset,
@@ -65,4 +65,86 @@ async function getAllPosts(req, res, next) {
     console.log(error);
   }
 }
-module.exports = { getUserPosts, getFeedPosts, getAllPosts };
+async function getSinglePost(req, res, next) {
+  try {
+    const { pool } = req;
+    const post_id = req.params.id;
+    const user_id = req.session?.user.user_id;
+    if (pool.connected) {
+      let results = await pool
+        .request()
+        .input("post_id", post_id)
+        .execute("GetPostByID");
+      res.status(200).json({
+        message: "Posts retrieved",
+        results: results.recordset,
+      });
+    } else {
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+async function deletePost(req, res, next) {
+  try {
+    const { pool } = req;
+    const { post_id } = req.body;
+    const user_id = req.session?.user.user_id;
+    if (pool.connected) {
+      let results = await pool
+        .request()
+        .input("post_id", post_id)
+        .input("user_id", user_id)
+        .execute("DeletePost");
+      res.status(200).json({
+        message: "Post deleted",
+        results: results.recordset,
+      });
+    } else {
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  } catch (error) {
+    res.send(error.message);
+    console.log(error.message);
+  }
+}
+async function createPost(req, res, next) {
+  try {
+    const { pool } = req;
+    const { post_text, link1, link2 } = req.body;
+    const user_id = req.session?.user.user_id;
+    if (pool.connected) {
+      let results = await pool
+        .request()
+        .input("post_text", post_text)
+        .input("user_id", user_id)
+        .input("link1", link1)
+        .input("link2", link2)
+        .execute("CreatePost");
+      res.status(200).json({
+        message: "Post created",
+        results: results.recordset,
+      });
+    } else {
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  } catch (error) {
+    res.send(error.message);
+    console.log(error.message);
+  }
+}
+module.exports = {
+  getUserPosts,
+  getFeedPosts,
+  getAllPosts,
+  getSinglePost,
+  deletePost,
+  createPost,
+};
