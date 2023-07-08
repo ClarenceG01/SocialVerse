@@ -75,9 +75,14 @@ async function getSinglePost(req, res, next) {
         .request()
         .input("post_id", post_id)
         .execute("GetPostByID");
+      let comments = await pool
+        .request()
+        .input("post_id", post_id)
+        .execute("GetPostComments");
       res.status(200).json({
         message: "Posts retrieved",
         results: results.recordset,
+        comments: comments.recordset,
       });
     } else {
       res.status(500).json({

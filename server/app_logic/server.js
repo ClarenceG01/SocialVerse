@@ -3,6 +3,8 @@ require("dotenv").config();
 const mssql = require("mssql");
 const config = require("./src/config/config");
 const { postRoute } = require("./src/routes/postRoute");
+const { commentRoute } = require("./src/routes/commentRoute");
+const { replyRoute } = require("./src/routes/replyRoute");
 const app = express();
 const port = process.env.PORT;
 app.use(express.json());
@@ -14,7 +16,7 @@ async function startApp() {
       req.pool = pool;
       next();
     });
-    app.use(postRoute);
+    app.use(postRoute, commentRoute, replyRoute);
     app.get("/", (req, res) => {
       res.send("Hello World");
     });
