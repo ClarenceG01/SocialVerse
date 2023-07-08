@@ -140,6 +140,58 @@ async function createPost(req, res, next) {
     console.log(error.message);
   }
 }
+// like and unlike post
+async function likePost(req, res, next) {
+  try {
+    const { pool } = req;
+    const { post_id } = req.body;
+    const user_id = req.session?.user.user_id;
+    if (pool.connected) {
+      let results = await pool
+        .request()
+        .input("post_id", post_id)
+        .input("user_id", user_id)
+        .execute("LikePost");
+      res.status(200).json({
+        message: "Post liked",
+        results: results.recordset,
+      });
+    } else {
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  } catch (error) {
+    res.send(error.message);
+    console.log(error.message);
+  }
+}
+async function commentPost(req, res, next) {
+  try {
+    const { pool } = req;
+    const { post_id, comment } = req.body;
+    const user_id = req.session?.user.user_id;
+    if (pool.connected) {
+      let results = await pool
+        .request()
+        .input("post_id", post_id)
+        .input("user_id", user_id)
+        .input("comment", comment)
+        .execute("CreateComment");
+      res.status(200).json({
+        message: "Post commented",
+        results: results.recordset,
+      });
+    } else {
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  } catch (error) {
+    res.send(error.message);
+    console.log(error.message);
+  }
+}
 module.exports = {
   getUserPosts,
   getFeedPosts,
@@ -147,4 +199,6 @@ module.exports = {
   getSinglePost,
   deletePost,
   createPost,
+  likePost,
+  commentPost,
 };
