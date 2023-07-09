@@ -29,12 +29,17 @@ async function getRepliesToComment(req, res, next) {
     const { pool } = req;
     const { comment_id } = req.body;
     if (pool.connected) {
+      let comment = await pool
+        .request()
+        .input("comment_id", comment_id)
+        .execute("GetCommentById");
       let results = await pool
         .request()
         .input("comment_id", comment_id)
         .execute("GetCommentReplies");
       res.status(200).json({
         message: "Replies fetched",
+        comment: comment.recordset,
         results: results.recordset,
       });
     } else {
