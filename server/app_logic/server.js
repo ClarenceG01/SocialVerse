@@ -7,6 +7,7 @@ const { commentRoute } = require("./src/routes/commentRoute");
 const { replyRoute } = require("./src/routes/replyRoute");
 const { followRoute } = require("./src/routes/followRoute");
 const { notificationRoute } = require("./src/routes/notificationRoute");
+const { profileRoute } = require("./src/routes/profileRoute");
 const app = express();
 const port = process.env.PORT;
 app.use(express.json());
@@ -23,7 +24,8 @@ async function startApp() {
       commentRoute,
       replyRoute,
       followRoute,
-      notificationRoute
+      notificationRoute,
+      profileRoute
     );
     app.get("/", (req, res) => {
       res.send("Hello World");
