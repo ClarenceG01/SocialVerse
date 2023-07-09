@@ -6,6 +6,7 @@ const { postRoute } = require("./src/routes/postRoute");
 const { commentRoute } = require("./src/routes/commentRoute");
 const { replyRoute } = require("./src/routes/replyRoute");
 const { followRoute } = require("./src/routes/followRoute");
+const { notificationRoute } = require("./src/routes/notificationRoute");
 const app = express();
 const port = process.env.PORT;
 app.use(express.json());
@@ -17,7 +18,13 @@ async function startApp() {
       req.pool = pool;
       next();
     });
-    app.use(postRoute, commentRoute, replyRoute, followRoute);
+    app.use(
+      postRoute,
+      commentRoute,
+      replyRoute,
+      followRoute,
+      notificationRoute
+    );
     app.get("/", (req, res) => {
       res.send("Hello World");
     });
