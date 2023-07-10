@@ -4,12 +4,15 @@ const {
   userRegister,
   userLogin,
   userLogout,
+  deleteAccount,
 } = require("../controllers/userController");
 const { newUserMiddleware } = require("../middlewares/registerUserMiddleware");
 const { user } = require("../config/config");
+const { authorizeSession } = require("../middlewares/authorizeMiddleware");
 
 userRoute.post("/register", newUserMiddleware, userRegister);
 userRoute.post("/login", userLogin);
 userRoute.get("/logout", userLogout);
+userRoute.delete("/deleteaccount", authorizeSession, deleteAccount);
 
 module.exports = { userRoute };

@@ -7,5 +7,9 @@ const {
 const { authorizeSession } = require("../middlewares/authorizeMiddleware");
 
 replyRoute.post("/likereply", authorizeSession, likeReply);
-replyRoute.post("/repliestocomment", authorizeSession, getRepliesToComment);
+replyRoute.get(
+  "/repliestocomment/:comment_id",
+  authorizeSession,
+  getRepliesToComment
+);
 module.exports = { replyRoute };

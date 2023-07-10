@@ -13,7 +13,8 @@ const registerSchema = joi.object({
         "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
       )
     ),
-  profile_picture: joi.string().min(0).max(255),
+  c_password: joi.ref("password"),
+  profile_picture: joi.string().min(0).max(1500).default("default.png"),
 });
 
 module.exports = { registerSchema };

@@ -11,6 +11,7 @@ async function getUserPosts(req, res, next) {
         .input("user_id", user_id)
         .execute("GetUserPosts");
       res.status(200).json({
+        success: true,
         message: "Posts retrieved",
         results: results.recordset,
       });
@@ -35,6 +36,7 @@ async function getFeedPosts(req, res, next) {
         .input("user_id", user_id)
         .execute("GetFollowingUsersPosts");
       res.status(200).json({
+        success: true,
         message: "Posts retrieved",
         results: results.recordset,
       });
@@ -53,6 +55,7 @@ async function getAllPosts(req, res, next) {
     if (pool.connected) {
       let results = await pool.request().execute("GetAllPosts");
       res.status(200).json({
+        success: true,
         message: "Posts retrieved",
         results: results.recordset,
       });
@@ -80,6 +83,7 @@ async function getSinglePost(req, res, next) {
         .input("post_id", post_id)
         .execute("GetPostComments");
       res.status(200).json({
+        success: true,
         message: "Posts retrieved",
         results: results.recordset,
         comments: comments.recordset,
@@ -132,6 +136,7 @@ async function createPost(req, res, next) {
         .input("link2", link2)
         .execute("CreatePost");
       res.status(200).json({
+        success: true,
         message: "Post created",
         results: results.recordset,
       });
@@ -158,6 +163,7 @@ async function likePost(req, res, next) {
         .input("user_id", user_id)
         .execute("LikePost");
       res.status(200).json({
+        success: true,
         message: "Post liked",
         results: results.recordset,
       });
@@ -184,6 +190,7 @@ async function commentPost(req, res, next) {
         .input("comment", comment)
         .execute("CreateComment");
       res.status(200).json({
+        success: true,
         message: "Post commented",
         results: results.recordset,
       });
