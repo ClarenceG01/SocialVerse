@@ -76,13 +76,37 @@ async function userLogin(req, res) {
     console.log(error);
   }
 }
-async function userLogout(req, res) {
-  console.log(req.pool.connected);
+async function deleteAccount(req, res, next) {
   try {
-    req.session.destroy();
-    res.status(200).json({ message: "Logout successful" });
+    const { pool } = req;
+    const user_id = req.session?.user.user_id;
+    if (pool.connected) {
+      let results = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("deleteAccount");
+      if (results.rowsAffected[0] > 0) {
+        res.status(200).json({
+          success: true,
+          message: "Account deleted",
+        });
+        req.session.destroy();
+      }
+    }
   } catch (error) {
     console.log(error);
   }
 }
-module.exports = { userRegister, userLogin, userLogout };
+async function userLogout(req, res) {
+  console.log(req.pool.connected);
+  try {
+    req.session.destroy();
+    res.status(200).json({
+      success: true,
+      message: "Logout successful",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { userRegister, userLogin, userLogout, deleteAccount };

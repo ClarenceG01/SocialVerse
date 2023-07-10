@@ -27,7 +27,7 @@ async function likeReply(req, res, next) {
 async function getRepliesToComment(req, res, next) {
   try {
     const { pool } = req;
-    const { comment_id } = req.body;
+    const { comment_id } = req.params;
     if (pool.connected) {
       let comment = await pool
         .request()
