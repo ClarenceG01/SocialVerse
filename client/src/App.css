@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --main: rgb(236, 240, 243);
+  --secondary: rgb(130, 71, 207);
+  --hover: rgb(255, 117, 129);
+  --blue: rgb(86, 81, 231);
+  --white_text: rgb(255, 255, 255);
+  --dark_text: rgb(107, 114, 128);
+  --border: rgb(209, 213, 219);
+}
+/* -----------------------LANDING PAGE------------------------- */
+.main-container {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  height: 97vh;
+}
+.left-container {
+  background-color: var(--blue);
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.right-container {
+  width: 50%;
+  background-color: var(--main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.right-container p {
+  text-decoration: none;
+  color: var(--dark_text);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+}
+.join-link {
+  text-decoration: none;
+  color: var(--dark_text);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+}
+.join-link p {
+  margin-top: 2%;
+  color: var(--blue);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+}
+.right-container .join-link :hover {
+  color: var(--hover);
+  transition: 0.3s ease-in-out;
+}
+.content .title {
+  color: var(--white_text);
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: "Caveat Brush", cursive;
+  text-align: center;
+  margin: 0 0 2% 0;
+}
+
+/* -------------------------------SIGNUP PAGE--------------------------- */
+.signup-page {
+  background-color: var(--main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.signup-form {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  padding: 1rem 2rem;
+  border-radius: 0.6rem;
+}
+.input-container {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+.input-container label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--dark_text);
+  font-family: "Inter Tight", sans-serif;
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+.input-container input {
+  background-color: #fff;
+  width: 80%;
+  padding: 0.5rem 0.5rem;
+  margin: 1rem 0 0 0;
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+.logo-container {
+  margin: 0 0 5% 0;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo-container h3 {
+  color: var(--dark_text);
+  font-family: "Inter Tight", sans-serif;
+}
+.button-link button {
+  background-color: var(--blue);
+  color: var(--white_text);
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+.button-link button:hover {
+  background-color: var(--hover);
+  transition: 0.3s ease-in-out;
+}
+.signup-logo {
+  width: 200px;
+}
+.signup-link {
+  margin: 1rem 0;
+}
+.signup-link p {
+  color: var(--dark_text);
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+}
+.signup-link a {
+  text-decoration: none;
+  color: var(--blue);
+}
+.signup-link a:hover {
+  color: var(--hover);
+  transition: 0.3s ease-in-out;
+}
+.eye-icon {
+  position: absolute;
+  top: 0;
+}
+.password-input {
+  position: relative;
+}
+
+/* -------------------------------LOGIN PAGE--------------------------- */
+.login-page {
+  background-color: var(--main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.login-form {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  padding: 1rem 2rem;
+  border-radius: 0.6rem;
+}
+.login-button button {
+  background-color: var(--blue);
+  color: var(--white_text);
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+.login-button button:hover {
+  background-color: var(--hover);
+  transition: 0.3s ease-in-out;
+}
+.login-logo {
+  width: 200px;
+}
+.login-link {
+  margin: 1rem 0;
+}
+.login-link p {
+  color: var(--dark_text);
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+}
+.login-link a {
+  text-decoration: none;
+  color: var(--blue);
+}
+.login-link a:hover {
+  color: var(--hover);
+  transition: 0.3s ease-in-out;
+}
+
+/* -----------------------------PROFILE PAGE---------------------- */
+.profile-page {
+  background-color: var(--main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.profile-form {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  padding: 1rem 2rem;
+  border-radius: 0.6rem;
+}
