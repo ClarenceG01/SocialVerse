@@ -8,9 +8,12 @@ const { replyRoute } = require("./src/routes/replyRoute");
 const { followRoute } = require("./src/routes/followRoute");
 const { notificationRoute } = require("./src/routes/notificationRoute");
 const { profileRoute } = require("./src/routes/profileRoute");
+const cors = require("cors");
+
 const app = express();
 const port = process.env.PORT;
 app.use(express.json());
+app.use(cors());
 async function startApp() {
   try {
     const pool = await mssql.connect(config);
