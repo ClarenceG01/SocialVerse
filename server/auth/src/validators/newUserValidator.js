@@ -1,7 +1,7 @@
 const { registerSchema } = require("../schema/userSchema");
 
 function newUserValidator(body) {
-  let user = registerSchema.validate(body, { abortEarly: false });
+  let user = registerSchema.validate(body);
 
   if (user.error?.details.length > 0) {
     let message = user.error.details.map((err) => err.message);

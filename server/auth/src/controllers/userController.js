@@ -33,11 +33,13 @@ async function userRegister(req, res) {
         html: html,
       };
       await sendMail(message);
-      res.json(`user ${user.username} added`);
+      if (results.rowsAffected[0] > 0) {
+        res.status(200).json({ message: "User created successfully" });
+      }
     }
   } catch (error) {
     res.send(error);
-    console.log(error);
+    console.log(error.originalError.info.message);
   }
 }
 async function userLogin(req, res) {
@@ -45,7 +47,7 @@ async function userLogin(req, res) {
 
   let pool = req.pool;
   try {
-    if (email == undefined) {
+    if (email == null || email == undefined) {
       let results = await getUserByUsername(username, pool);
       let is_match = await bcrypt.compare(password, results.password);
       if (is_match) {
@@ -58,7 +60,7 @@ async function userLogin(req, res) {
       } else {
         res.status(401).json({ message: "Login failed" });
       }
-    } else if (username == undefined) {
+    } else if (username == null || username == undefined) {
       let results = await getUserByEmail(email, pool);
       let is_match = await bcrypt.compare(password, results.password);
       if (is_match) {

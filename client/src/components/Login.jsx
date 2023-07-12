@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../images/logo.png";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 
 const Login = () => {
+  // usestate
+  const [credential, setCredential] = useState("");
+  const [Password, setPassword] = useState("");
+  // function to handle submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user_data = {
+      username: credential,
+      password: Password,
+    };
+  };
   return (
     <div className="login-page">
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="logo-container">
           <h3>LOG IN TO SOCIALVERSE</h3>
           <img className="login-logo" src={logo} alt="" />
@@ -14,12 +25,22 @@ const Login = () => {
         <div className="input-container">
           <label>
             Username or Email
-            <input type="text" required />
+            <input
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
           </label>
 
           <label>
             Password
-            <input type="password" required />
+            <input
+              type="password"
+              value={Password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
           </label>
         </div>
         <div className="login-button">

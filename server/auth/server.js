@@ -8,9 +8,11 @@ const config = require("./src/config/config");
 const sql = require("mssql");
 const RedisStore = require("connect-redis").default;
 const { createClient } = require("redis");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.set("view engine", "ejs");
 
 async function startApp() {
