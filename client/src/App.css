@@ -259,3 +259,73 @@
   display: flex;
   flex-direction: column;
 }
+/* -------------------------HOME----------------------- */
+.Home-component {
+  background-color: var(--main);
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "side post extra"
+    "side feed extra";
+  /* edit the size of the areas */
+  grid-template-columns: 0.5fr 2fr 1fr;
+  grid-template-rows: 0.5fr 2fr;
+}
+.Sidemenu-component {
+  background-color: green;
+  grid-area: side;
+}
+.Feed-component {
+  background-color: yellow;
+  grid-area: feed;
+}
+.Extra-component {
+  background-color: red;
+  grid-area: extra;
+}
+.Post-component {
+  background-color: var(--main);
+  grid-area: post;
+}
+/* --------------------------CREATE POST----------------------------- */
+.createpost-component {
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+.createpost-form {
+  display: flex;
+}
+.createpost-inputbox {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.createpost-textarea {
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--dark_text);
+  border-radius: 5px;
+  outline: none;
+  resize: none;
+  font-size: 20px;
+  padding: 10px;
+}
+.createpost-btn {
+  background-color: var(--blue);
+  opacity: 0.7;
+  color: var(--white_text);
+  padding: 1px 1px;
+  border-radius: 0.3rem;
+  font-family: "Inter Tight", sans-serif;
+  border: none;
+  cursor: pointer;
+}
+.createpost-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}

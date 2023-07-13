@@ -135,11 +135,13 @@ async function createPost(req, res, next) {
         .input("link1", link1)
         .input("link2", link2)
         .execute("CreatePost");
-      res.status(200).json({
-        success: true,
-        message: "Post created",
-        results: results.recordset,
-      });
+      if (results.rowsAffected[0] > 0) {
+        res.status(200).json({
+          success: true,
+          message: "Post created",
+          results: results.recordset,
+        });
+      }
     } else {
       res.status(500).json({
         message: "Server error",
