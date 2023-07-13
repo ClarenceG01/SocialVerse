@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import logo from "../images/logo.png";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   // usestate
   const [credential, setCredential] = useState("");
   const [Password, setPassword] = useState("");
@@ -11,13 +12,23 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user_data = {
+      email: credential,
       username: credential,
       password: Password,
     };
+    const response = await axios.post(
+      "http://localhost:5000/login",
+      user_data,
+      { withCredentials: true }
+    );
+    console.log(response.data.message);
+    if (response.data.message === "Login successful") {
+      navigate("/home");
+    }
   };
   return (
     <div className="login-page">
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form">
         <div className="logo-container">
           <h3>LOG IN TO SOCIALVERSE</h3>
           <img className="login-logo" src={logo} alt="" />
@@ -44,7 +55,7 @@ const Login = () => {
           </label>
         </div>
         <div className="login-button">
-          <button>Login</button>
+          <button onClick={handleSubmit}>Login</button>
         </div>
         <div className="login-link">
           <p>

@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Profile from "./components/profile";
+import Home from "./components/Home";
 
 function App() {
   const myRouter = createBrowserRouter(
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/home" element={<Home />} />
       </Route>
     )
   );

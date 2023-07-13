@@ -1,8 +1,7 @@
 const bcrypt = require("bcrypt");
 const createMarkup = require("../utils/createMarkup");
 const sendMail = require("../utils/sendMail");
-const { getUserByEmail } = require("../utils/getUserByEmail");
-const { getUserByUsername } = require("../utils/getUserByUsername");
+const { getUser } = require("../utils/getUser");
 
 // Register
 async function userRegister(req, res) {
@@ -47,8 +46,36 @@ async function userLogin(req, res) {
 
   let pool = req.pool;
   try {
-    if (email == null || email == undefined) {
-      let results = await getUserByUsername(username, pool);
+    // if (email == null || email == undefined) {
+    //   let results = await getUserByUsername(username, pool);
+    //   let is_match = await bcrypt.compare(password, results.password);
+    //   if (is_match) {
+    //     req.session.authorized = true;
+    //     req.session.user = results;
+    //     res.status(200).json({
+    //       message: "Login successful",
+    //       results: [req.session, req.sessionID],
+    //     });
+    //   } else {
+    //     res.status(401).json({ message: "Login failed" });
+    //   }
+    // } else if (username == null || username == undefined) {
+    //   let results = await getUserByEmail(email, pool);
+    //   let is_match = await bcrypt.compare(password, results.password);
+    //   if (is_match) {
+    //     req.session.authorized = true;
+    //     req.session.user = results;
+    //     res.status(200).json({
+    //       message: "Login successful",
+    //       results: [req.session, req.sessionID],
+    //     });
+    //   } else {
+    //     res.status(401).json({ message: "Login failed" });
+    //   }
+    // }
+    console.log(pool.connected);
+    if (pool.connected) {
+      let results = await getUser(email, username, pool);
       let is_match = await bcrypt.compare(password, results.password);
       if (is_match) {
         req.session.authorized = true;
@@ -60,19 +87,8 @@ async function userLogin(req, res) {
       } else {
         res.status(401).json({ message: "Login failed" });
       }
-    } else if (username == null || username == undefined) {
-      let results = await getUserByEmail(email, pool);
-      let is_match = await bcrypt.compare(password, results.password);
-      if (is_match) {
-        req.session.authorized = true;
-        req.session.user = results;
-        res.status(200).json({
-          message: "Login successful",
-          results: [req.session, req.sessionID],
-        });
-      } else {
-        res.status(401).json({ message: "Login failed" });
-      }
+    } else {
+      res.status(500).json({ message: "Server error" });
     }
   } catch (error) {
     console.log(error);

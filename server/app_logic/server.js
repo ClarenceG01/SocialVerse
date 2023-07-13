@@ -13,7 +13,13 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT;
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+    optionsSuccessStatus: 200,
+  })
+);
 async function startApp() {
   try {
     const pool = await mssql.connect(config);
