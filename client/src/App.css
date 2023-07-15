@@ -282,13 +282,11 @@
     "side feed extra"
     "side feed extra";
   /* edit the size of the areas */
-  grid-template-columns: 0.2fr 1fr 0.5fr;
+  grid-template-columns: 0.3fr 1fr 0.5fr;
   grid-template-rows: minmax(0, 1fr) minmax(0, 2fr);
   scroll-behavior: smooth;
 }
 .Sidemenu-component {
-  background-color: red;
-  opacity: 0.1;
   grid-area: side;
 }
 .Feed-component {
@@ -305,7 +303,6 @@
   flex-direction: column;
   margin: 0 auto;
   width: 80%;
-  overflow: hidden;
   overflow-y: scroll;
 }
 .Feed-component::-webkit-scrollbar {
@@ -362,13 +359,16 @@
 /* ---------------------SINGLE POST---------------------------- */
 .post-container {
   background-color: var(--white_text);
-  width: 90%;
+  width: 95%;
   height: fit-content;
-  margin: 1rem auto;
+  margin: 0 auto;
   padding: 1rem;
-  border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  cursor: pointer;
+}
+.post-container:hover {
+  background-color: rgb(247, 249, 249);
 }
 .post-header {
   display: flex;
@@ -395,4 +395,13 @@
   margin: 1rem 0;
   object-fit: cover;
   object-position: center;
+}
+/* -------------------------------------SIDEBAR-------------------------- */
+.Sidemenu-component {
+  background-color: yellow;
+  width: 250px;
+  min-width: 250px;
+  padding: 20px 20px;
+  margin: 20px auto 0 auto;
+  box-shadow: 0 0 6px hsl(210 14% 90%);
 }
