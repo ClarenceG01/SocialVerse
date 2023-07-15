@@ -43,7 +43,7 @@ async function userRegister(req, res) {
 }
 async function userLogin(req, res) {
   let { email, username, password } = req.body;
-
+  console.log(req.body);
   let pool = req.pool;
   try {
     // if (email == null || email == undefined) {
@@ -73,25 +73,29 @@ async function userLogin(req, res) {
     //     res.status(401).json({ message: "Login failed" });
     //   }
     // }
-    console.log(pool.connected);
+
     if (pool.connected) {
       let results = await getUser(email, username, pool);
-      let is_match = await bcrypt.compare(password, results.password);
-      if (is_match) {
-        req.session.authorized = true;
-        req.session.user = results;
-        res.status(200).json({
-          message: "Login successful",
-          results: [req.session, req.sessionID],
-        });
+      if (results?.originalError?.info?.message) {
+        res.status(404).json({ message: "User not found" });
       } else {
-        res.status(401).json({ message: "Login failed" });
+        let is_match = await bcrypt.compare(password, results.password);
+        if (is_match) {
+          req.session.authorized = true;
+          req.session.user = results;
+          res.status(200).json({
+            message: "Login successful",
+            results: [req.session, req.sessionID],
+          });
+        } else {
+          res.status(401).json({ message: "Login failed" });
+        }
       }
     } else {
       res.status(500).json({ message: "Server error" });
     }
   } catch (error) {
-    console.log(error);
+    console.log(`error at controller :${error}`);
   }
 }
 async function deleteAccount(req, res, next) {

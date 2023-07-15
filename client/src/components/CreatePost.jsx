@@ -52,6 +52,13 @@ function CreatePost() {
             value={Post}
             required
           />
+          {/* <div
+            class="createpost-textarea"
+            contentEditable
+            onChange={(e) => setPost(e.target.value)}
+            value={Post}
+            required
+></div> */}
           <input
             className="tweetBox__imageInput"
             placeholder="Attach an image"

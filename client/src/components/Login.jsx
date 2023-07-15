@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import logo from "../images/logo.png";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,20 +12,31 @@ const Login = () => {
   const [Password, setPassword] = useState("");
   // function to handle submit
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const user_data = {
-      email: credential,
-      username: credential,
-      password: Password,
-    };
-    const response = await axios.post(
-      "http://localhost:5000/login",
-      user_data,
-      { withCredentials: true }
-    );
-    console.log(response.data.message);
-    if (response.data.message === "Login successful") {
-      navigate("/home");
+    try {
+      e.preventDefault();
+      const user_data = {
+        email: credential,
+        username: credential,
+        password: Password,
+      };
+      const response = await axios.post(
+        "http://localhost:5000/login",
+        user_data,
+        { withCredentials: true }
+      );
+      // console.log(`response`, response);
+      // console.log(`user_data`, user_data);
+      // console.log(response);
+      if (response.data.message === "Login successful") {
+        navigate("/home");
+      }
+    } catch (error) {
+      // if (error.response.status === 401) {
+      //   toast.error("Invalid Credentials");
+      // } else if (error.response.status === 404) {
+      //   toast.error("User not found");
+      // }
+      console.log(error);
     }
   };
   return (
@@ -63,6 +76,7 @@ const Login = () => {
           </p>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };
