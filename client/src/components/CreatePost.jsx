@@ -3,6 +3,8 @@ import "../App.css";
 import { Avatar } from "@material-ui/core";
 import logo from "../images/logo.png";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CreatePost() {
   const [Post, setPost] = useState("");
@@ -35,7 +37,9 @@ function CreatePost() {
         post_inputs,
         { withCredentials: true }
       );
-      console.log(response);
+      if (response.data.message === "Post created") {
+        toast.success("Post created successfully");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -71,6 +75,7 @@ function CreatePost() {
           POST
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }
