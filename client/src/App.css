@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Lunasima&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -15,10 +15,15 @@
   --border: rgb(209, 213, 219);
 }
 /* -----------------------LANDING PAGE------------------------- */
-.main-container {
-  padding: 0.5rem 1rem;
+.LandingPage-component {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+.LandingPage-component p {
+  text-align: center;
+}
+.main-container {
+  display: flex;
   height: 97vh;
 }
 .left-container {
@@ -34,10 +39,18 @@
   background-color: var(--main);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 .right-container p {
+  text-decoration: none;
+  color: var(--dark_text);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+}
+.right-container h2 {
   text-decoration: none;
   color: var(--dark_text);
   font-size: 1.5rem;
@@ -54,7 +67,7 @@
   font-family: "Inter Tight", sans-serif;
 }
 .join-link p {
-  margin-top: 2%;
+  margin-top: 4%;
   color: var(--blue);
   font-size: 1.5rem;
   line-height: 2rem;
@@ -64,6 +77,7 @@
 .right-container .join-link :hover {
   color: var(--hover);
   transition: 0.3s ease-in-out;
+  border-bottom: 2px solid var(--hover);
 }
 .content .title {
   color: var(--white_text);
@@ -261,39 +275,55 @@
 }
 /* -------------------------HOME----------------------- */
 .Home-component {
-  background-color: var(--main);
+  background-color: var(--white_text);
   height: 100vh;
   display: grid;
   grid-template-areas:
-    "side post extra"
+    "side feed extra"
     "side feed extra";
   /* edit the size of the areas */
-  grid-template-columns: 0.5fr 2fr 1fr;
-  grid-template-rows: 0.5fr 2fr;
+  grid-template-columns: 0.2fr 1fr 0.5fr;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 2fr);
+  scroll-behavior: smooth;
 }
 .Sidemenu-component {
-  background-color: green;
+  background-color: red;
+  opacity: 0.1;
   grid-area: side;
 }
 .Feed-component {
-  background-color: yellow;
   grid-area: feed;
 }
 .Extra-component {
   background-color: red;
   grid-area: extra;
+  opacity: 0.1;
 }
-.Post-component {
-  background-color: var(--main);
-  grid-area: post;
+/* -----------------------FEED----------------------- */
+.Feed-component {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.Feed-component::-webkit-scrollbar {
+  display: none;
 }
 /* --------------------------CREATE POST----------------------------- */
 .createpost-component {
-  padding-bottom: 10px;
-  padding-right: 10px;
+  padding: 1rem 0.5rem;
+  position: sticky;
+  top: 0;
+  border: 1px solid var(--border);
+  z-index: 3;
+  -webkit-backdrop-filter: blur(4px);
+  -o-backdrop-filter: blur(4px);
+  -moz-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 .createpost-form {
-  display: flex;
 }
 .createpost-inputbox {
   width: fit-content;
@@ -304,9 +334,9 @@
 }
 .createpost-textarea {
   margin: 0.5rem 0.5rem 0 0.5rem;
-  width: 100%;
-  height: 100%;
-  border: 1px solid var(--dark_text);
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   border-radius: 5px;
   outline: none;
   resize: none;
@@ -328,4 +358,41 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+/* ---------------------SINGLE POST---------------------------- */
+.post-container {
+  background-color: var(--white_text);
+  width: 90%;
+  height: fit-content;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.post-header {
+  display: flex;
+  justify-content: flex-start;
+}
+.avatar {
+  margin-right: 1rem;
+}
+.user-details p {
+  font-family: "Inter Tight", sans-serif;
+}
+.post-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.post-body p {
+  font-family: "Lunasima", sans-serif;
+}
+.post-photo {
+  width: 60%;
+  height: 60%;
+  margin: 1rem 0;
+  object-fit: cover;
+  object-position: center;
 }
