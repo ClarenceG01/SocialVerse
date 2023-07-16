@@ -409,7 +409,8 @@
 .reactions > * {
   margin-right: 1rem;
 }
-.comments {
+.filled {
+  color: rgb(249, 24, 128);
 }
 /* -------------------------------------SIDEBAR-------------------------- */
 .Sidemenu-component {

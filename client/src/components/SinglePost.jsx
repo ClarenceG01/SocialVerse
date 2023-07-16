@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar } from "@material-ui/core";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
+import axios from "axios";
 
 const SinglePost = ({ post }) => {
-  console.log(post);
+  const [Like, setLike] = useState();
+  const checkLike = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5050/checklike",
+        { post_id: post.post_id },
+        { withCredentials: true }
+      );
+      setLike(response.data.response);
+      console.log(Like);
+    } catch (error) {}
+  };
+  const handleLike = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5050/likepost",
+        { post_id: post.post_id },
+        { withCredentials: true }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    checkLike();
+  });
+  const handleComment = () => {};
   return (
     <div className="post-container">
       <div className="post-header">
@@ -27,11 +55,18 @@ const SinglePost = ({ post }) => {
       <div className="post-footer">
         <div className="reactions">
           <div className="likes">
-            <AiOutlineLike className="like-icon" />
+            {Like === 1 ? (
+              <AiOutlineLike
+                className="like-icon filled"
+                onClick={handleLike}
+              />
+            ) : (
+              <AiOutlineLike className="like-icon" onClick={handleLike} />
+            )}
             <p className="likes">{post.like_count}</p>
           </div>
           <div className="comments">
-            <FaRegComment className="comment-icon" />
+            <FaRegComment className="comment-icon" onClick={handleComment} />
             <p className="comments">{post.comment_count}</p>
           </div>
         </div>
