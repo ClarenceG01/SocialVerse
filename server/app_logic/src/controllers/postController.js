@@ -164,6 +164,7 @@ async function likePost(req, res, next) {
         .input("post_id", post_id)
         .input("user_id", user_id)
         .execute("LikePost");
+
       res.status(200).json({
         success: true,
         message: "Post liked",
@@ -178,6 +179,25 @@ async function likePost(req, res, next) {
     res.send(error.message);
     console.log(error.message);
   }
+}
+async function checkLike(req, res, next) {
+  try {
+    const { pool } = req;
+    if (pool.connected) {
+      const { post_id } = req.body;
+      const user_id = req.session?.user.user_id;
+      let response = await pool
+        .request()
+        .input("post_id", post_id)
+        .input("user_id", user_id)
+        .execute("GetLikesByPostAndUser");
+      res.status(200).json({
+        success: true,
+        message: "Post liked",
+        response: response.recordset.length,
+      });
+    }
+  } catch (error) {}
 }
 async function commentPost(req, res, next) {
   try {
@@ -214,5 +234,6 @@ module.exports = {
   deletePost,
   createPost,
   likePost,
+  checkLike,
   commentPost,
 };
