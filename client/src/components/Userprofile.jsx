@@ -32,17 +32,27 @@ const Userprofile = () => {
         return (
           <section className="Userprofile-component">
             <div className="profile-top">
-              <Avatar src={user.profile_picture} />
-              <Button>EDIT PROFILE</Button>
-            </div>
-            <div>
-              <p>{user.fullname}</p>
-              <p>{user.username}</p>
-              <p>{user.bio}</p>
-            </div>
-            <div>
-              <p onClick={getFollowing}> Following{user.following_count}</p>
-              <p onClick={getFollowers}>Followers{user.followers_count}</p>
+              <div className="profile-edit">
+                <div className="right">
+                  <Avatar src={user.profile_picture} />
+                  <p>{user.full_name}</p>
+                  <p>@{user.username}</p>
+                </div>
+                <button>Edit Profile</button>
+              </div>
+              <div className="user-details">
+                <p>{user.bio}</p>
+              </div>
+              <div className="analytics">
+                <p onClick={getFollowing}>
+                  <span className="counts">{user.following_count}</span>
+                  <span className="title">Following</span>
+                </p>
+                <p onClick={getFollowers}>
+                  <span className="counts">{user.followers_count}</span>
+                  <span className="title">Followers</span>
+                </p>
+              </div>
             </div>
             <hr />
             <Userposts />

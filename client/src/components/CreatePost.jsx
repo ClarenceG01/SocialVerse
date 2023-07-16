@@ -75,7 +75,6 @@ function CreatePost() {
           POST
         </button>
       </form>
-      <ToastContainer />
     </div>
   );
 }

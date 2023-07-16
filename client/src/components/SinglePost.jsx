@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import axios from "axios";
 
 const SinglePost = ({ post }) => {
+  const navigate = useNavigate();
   const [Like, setLike] = useState();
   const checkLike = async () => {
     try {
@@ -14,7 +16,6 @@ const SinglePost = ({ post }) => {
         { withCredentials: true }
       );
       setLike(response.data.response);
-      console.log(Like);
     } catch (error) {}
   };
   const handleLike = async () => {
@@ -29,12 +30,17 @@ const SinglePost = ({ post }) => {
       console.log(error);
     }
   };
+  const postClick = () => {
+    // navigate("/postcomments", { state: { post: post } });
+  };
   useEffect(() => {
     checkLike();
   });
-  const handleComment = () => {};
+  const handleComment = () => {
+    navigate("/postcomments", { state: { post: post } });
+  };
   return (
-    <div className="post-container">
+    <div className="post-container" onClick={postClick}>
       <div className="post-header">
         <Avatar
           className="avatar"
@@ -66,8 +72,10 @@ const SinglePost = ({ post }) => {
             <p className="likes">{post.like_count}</p>
           </div>
           <div className="comments">
-            <FaRegComment className="comment-icon" onClick={handleComment} />
-            <p className="comments">{post.comment_count}</p>
+            <NavLink to="/postcomments" className="navlink">
+              <FaRegComment className="comment-icon" onClick={handleComment} />
+              <p className="comments">{post.comment_count}</p>
+            </NavLink>
           </div>
         </div>
       </div>

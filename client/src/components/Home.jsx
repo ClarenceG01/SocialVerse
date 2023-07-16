@@ -5,6 +5,7 @@ import Feed from "./Feed";
 import Extra from "./Extra";
 import Logout from "./logout";
 import Userprofile from "./Userprofile";
+import PostComments from "./PostComments";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
         <Route path="/" element={<Feed />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/userprofile" element={<Userprofile />} />
+        <Route path="/postcomments" element={<PostComments />} />
       </Routes>
 
       <Extra />
