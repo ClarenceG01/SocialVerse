@@ -24,11 +24,14 @@ const Login = () => {
         user_data,
         { withCredentials: true }
       );
-      // console.log(`response`, response);
+      console.log(`response`, response);
       // console.log(`user_data`, user_data);
       // console.log(response);
       if (response.data.message === "Login successful") {
-        navigate("/home");
+        toast.success("Login successful");
+        setTimeout(() => {
+          navigate("/home");
+        }, 5000);
       }
     } catch (error) {
       // if (error.response.status === 401) {
@@ -41,7 +44,7 @@ const Login = () => {
   };
   return (
     <div className="login-page">
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="logo-container">
           <h3>LOG IN TO SOCIALVERSE</h3>
           <img className="login-logo" src={logo} alt="" />
@@ -68,7 +71,7 @@ const Login = () => {
           </label>
         </div>
         <div className="login-button">
-          <button onClick={handleSubmit}>Login</button>
+          <button>Login</button>
         </div>
         <div className="login-link">
           <p>

@@ -40,9 +40,12 @@ import Login from "./components/Login";
 import Profile from "./components/profile";
 import Home from "./components/Home";
 import Userprofile from "./components/Userprofile";
-import Logout from "./components/Logout";
+import Logout from "./components/logout";
 import SideMenu from "./components/SideMenu";
 import Extra from "./components/Extra";
+import Following from "./components/Following";
+import Followers from "./components/Followers";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -55,7 +58,10 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/userprofile" element={<Userprofile />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/following" element={<Following />} />
+        <Route path="/followers" element={<Followers />} />
       </Routes>
+      <ToastContainer />
     </Router>
   );
 }

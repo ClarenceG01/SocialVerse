@@ -366,6 +366,9 @@
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .post-container:hover {
   background-color: rgb(247, 249, 249);
@@ -393,15 +396,68 @@
   width: 60%;
   height: 60%;
   margin: 1rem 0;
+  border-radius: 0.5rem;
   object-fit: cover;
   object-position: center;
 }
+.reactions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.reactions > * {
+  margin-right: 1rem;
+}
+.comments {
+}
 /* -------------------------------------SIDEBAR-------------------------- */
 .Sidemenu-component {
-  background-color: yellow;
-  width: 250px;
-  min-width: 250px;
-  padding: 20px 20px;
-  margin: 20px auto 0 auto;
-  box-shadow: 0 0 6px hsl(210 14% 90%);
+  width: 100%;
+  min-width: 0.5rem;
+  padding: 1.2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Sidemenu-component > * {
+  margin: 1rem;
+}
+.Sidemenu-component a {
+  text-decoration: none;
+  color: var(--dark_text);
+}
+.sv-logo img {
+  width: 200px;
+}
+/* ------------------------------------USERPROFILE-------------------------------- */
+.Userprofile-component {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.Userprofile-component::-webkit-scrollbar {
+  display: none;
+}
+.profile-top {
+  margin-top: 1rem;
+  padding: 1rem 0.5rem;
+  position: sticky;
+  top: 0;
+  border: 1px solid var(--border);
+  z-index: 3;
+  -webkit-backdrop-filter: blur(4px);
+  -o-backdrop-filter: blur(4px);
+  -moz-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+/* ------------------------------------LOGOUT-------------------------------- */
+.logout-component {
+  width: 80%;
+  margin: 1rem auto;
 }

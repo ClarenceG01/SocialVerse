@@ -12,7 +12,7 @@ const { authorizeSession } = require("../middlewares/authorizeMiddleware");
 
 userRoute.post("/register", newUserMiddleware, userRegister);
 userRoute.post("/login", userLogin);
-userRoute.post("/logout", userLogout);
+userRoute.get("/logout", userLogout);
 userRoute.delete("/deleteaccount", authorizeSession, deleteAccount);
 
 module.exports = { userRoute };
