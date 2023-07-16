@@ -412,6 +412,13 @@
 .filled {
   color: rgb(249, 24, 128);
 }
+.likes {
+  color: var(--dark_text);
+}
+.navlink {
+  text-decoration: none;
+  color: var(--dark_text);
+}
 /* -------------------------------------SIDEBAR-------------------------- */
 .Sidemenu-component {
   width: 100%;
@@ -447,8 +454,11 @@
 }
 .profile-top {
   margin-top: 1rem;
-  padding: 1rem 0.5rem;
+  padding: 1rem 2rem;
   position: sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   top: 0;
   border: 1px solid var(--border);
   z-index: 3;
@@ -457,8 +467,56 @@
   -moz-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
+.profile-top p {
+  font-family: "Inter Tight", sans-serif;
+  color: var(--dark_text);
+}
+.profile-top > * {
+  margin-bottom: 1rem;
+}
+.profile-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-edit .right {
+  display: flex;
+  flex-direction: column;
+}
+.profile-top button {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  padding: 1rem 0.4rem;
+}
+.analytics {
+  display: flex;
+}
+.analytics > * {
+  margin-right: 1rem;
+}
+.analytics .title {
+  margin-left: 0.4rem;
+  opacity: 0.7;
+}
+.analytics .counts {
+  color: black;
+}
 /* ------------------------------------LOGOUT-------------------------------- */
 .logout-component {
   width: 80%;
   margin: 1rem auto;
+}
+/* ----------------------------------POST&COMMENTS---------------------------- */
+.PostComments-component {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.posts-comments {
+  background-color: yellow;
+  width: 100%;
 }
