@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import SideMenu from "./SideMenu";
 import Feed from "./Feed";
 import Extra from "./Extra";
-import Logout from "./Logout";
+import Logout from "./logout";
 import Userprofile from "./Userprofile";
 
 const Home = () => {

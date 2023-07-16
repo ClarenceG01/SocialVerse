@@ -33,10 +33,20 @@ async function followCount(req, res, next) {
       let results = await pool
         .request()
         .input("user_id", user_id)
-        .execute("GetUserFollowCounts");
+        .execute("UserProfile");
+      let followingUsers = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("GetFollowingUsers");
+      let followers = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("GetFollowers");
       res.status(200).json({
-        message: "Follow count retrieved",
+        message: "User profile retrieved",
         results: results.recordset,
+        following: followingUsers.recordset,
+        followers: followers.recordset,
       });
     } else {
       res.status(500).json({

@@ -120,23 +120,14 @@ async function deleteAccount(req, res, next) {
   }
 }
 async function userLogout(req, res) {
-  let { password } = req.body;
   console.log(req.pool.connected);
   try {
-    const passwordFromSession = req.session.user.password;
-    const is_match = await bcrypt.compare(password, passwordFromSession);
-    if (is_match) {
-      req.session.destroy();
-      res.status(200).json({
-        success: true,
-        message: "User logged out successfully",
-      });
-    } else {
-      res.status(401).json({
-        success: false,
-        message: "Incorrect Password",
-      });
-    }
+    req.session.destroy();
+    res.status(200).json({
+      success: true,
+      message: "Logout successful",
+      results: req.session,
+    });
   } catch (error) {
     console.log(error);
   }
