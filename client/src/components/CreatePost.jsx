@@ -69,7 +69,7 @@ function CreatePost() {
             className="tweetBox__imageInput"
             placeholder="Attach an image"
             type="file"
-            accept="image/png, image/jpeg,image/jpg,image/gif,video/mp4,video/x-m4v,video/*"
+            accept="image/png, image/jpeg,image/jpg,image/gif"
             onChange={(e) => uploadImage(e.target.files)}
           />
         </div>
