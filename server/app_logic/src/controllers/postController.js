@@ -197,7 +197,9 @@ async function checkLike(req, res, next) {
         response: response.recordset.length,
       });
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 async function commentPost(req, res, next) {
   try {
