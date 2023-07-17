@@ -22,6 +22,8 @@ function CreatePost() {
       .then((data) => {
         setMedia(data.secure_url);
       });
+    const values = [...formData.entries()];
+    console.log(`values`, values);
   };
   const sendPost = async (e) => {
     try {

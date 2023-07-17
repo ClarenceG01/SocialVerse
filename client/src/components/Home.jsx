@@ -6,6 +6,9 @@ import Extra from "./Extra";
 import Logout from "./logout";
 import Userprofile from "./Userprofile";
 import PostComments from "./PostComments";
+import Followers from "./Followers";
+import Following from "./Following";
+import EditProfile from "./EditProfile";
 
 const Home = () => {
   return (
@@ -16,6 +19,9 @@ const Home = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/userprofile" element={<Userprofile />} />
         <Route path="/postcomments" element={<PostComments />} />
+        <Route path="/followers" element={<Followers />} />
+        <Route path="/following" element={<Following />} />
+        <Route path="/editprofile" element={<EditProfile />} />
       </Routes>
 
       <Extra />

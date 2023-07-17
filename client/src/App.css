@@ -330,6 +330,7 @@
   justify-content: space-between;
 }
 .createpost-textarea {
+  width: 80%;
   margin: 0.5rem 0.5rem 0 0.5rem;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
@@ -516,7 +517,45 @@
   height: 100vh;
   overflow-y: scroll;
 }
+.PostComments-component::-webkit-scrollbar {
+  display: none;
+}
 .posts-comments {
-  background-color: yellow;
   width: 100%;
+  margin: 0 auto;
+}
+/* ---------------------------------------------EDIT PROFILE------------------------------------ */
+.EditProfile-component {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.EditProfile-component::-webkit-scrollbar {
+  display: none;
+}
+/* -----------------------------------------------CREATE COMMENT -------------------------------- */
+.createcomment-box {
+  margin: 1rem 0;
+  width: 100%;
+}
+.createcomment-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.createcomment-textarea {
+  margin-left: 2rem;
+  width: 70%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+.createcomment-top p {
+  margin-left: 3rem;
+}
+.button-div {
+  display: flex;
+  justify-content: flex-end;
 }
