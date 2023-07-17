@@ -17,7 +17,9 @@ const SinglePost = ({ post }) => {
         { withCredentials: true }
       );
       setLike(response.data.response);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleLike = async () => {
     try {
