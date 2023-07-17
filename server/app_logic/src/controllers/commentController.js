@@ -49,4 +49,25 @@ async function likeComment(req, res, next) {
     console.log(error);
   }
 }
-module.exports = { replyToComment, likeComment };
+async function checkLike(req, res, next) {
+  try {
+    const { pool } = req;
+    if (pool.connected) {
+      const { comment_id } = req.body;
+      const user_id = req.session?.user.user_id;
+      let response = await pool
+        .request()
+        .input("comment_id", comment_id)
+        .input("user_id", user_id)
+        .execute("GetLikesByCommentAndUser");
+      res.status(200).json({
+        success: true,
+        message: "Post liked",
+        response: response.recordset.length,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { replyToComment, likeComment, checkLike };
