@@ -12,7 +12,7 @@ const SingleComment = ({ comment }) => {
         <Avatar src={comment.profile_picture} alt="profile picture" />
         <div className="user-details">
           <p className="fullname">{comment.full_name}</p>
-          <p className="username">{comment.username}</p>
+          <p className="username">@{comment.username}</p>
         </div>
       </div>
       <div className="post-body">

@@ -5,6 +5,7 @@ import Extra from "./Extra";
 import SinglePost from "./SinglePost";
 import axios from "axios";
 import SingleComment from "./SingleComment";
+import CreateComment from "./CreateComment";
 
 const PostComments = () => {
   const location = useLocation();
@@ -27,6 +28,7 @@ const PostComments = () => {
       <SideMenu />
       <div className="PostComments-component">
         <SinglePost key={post.post_id} post={post} />
+        <CreateComment post={post} />
         <div className="posts-comments">
           {Comments.map((comment) => {
             return <SingleComment key={comment.comment_id} comment={comment} />;

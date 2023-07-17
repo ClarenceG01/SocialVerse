@@ -8,6 +8,7 @@ import axios from "axios";
 const SinglePost = ({ post }) => {
   const navigate = useNavigate();
   const [Like, setLike] = useState();
+  const [LikeCount, setLikeCount] = useState(post.like_count);
   const checkLike = async () => {
     try {
       const response = await axios.post(
@@ -25,13 +26,18 @@ const SinglePost = ({ post }) => {
         { post_id: post.post_id },
         { withCredentials: true }
       );
+      if (Like == 1) {
+        setLikeCount(LikeCount - 1);
+      } else {
+        setLikeCount(LikeCount + 1);
+      }
       console.log(response.data);
     } catch (error) {
       console.log(error);
     }
   };
   const postClick = () => {
-    // navigate("/postcomments", { state: { post: post } });
+    navigate("/postcomments", { state: { post: post } });
   };
   useEffect(() => {
     checkLike();
@@ -40,7 +46,7 @@ const SinglePost = ({ post }) => {
     navigate("/postcomments", { state: { post: post } });
   };
   return (
-    <div className="post-container" onClick={postClick}>
+    <div className="post-container">
       <div className="post-header">
         <Avatar
           className="avatar"
@@ -52,7 +58,7 @@ const SinglePost = ({ post }) => {
           <p className="username">@{post.username}</p>
         </div>
       </div>
-      <div className="post-body">
+      <div className="post-body" onClick={postClick}>
         <p>{post.post_text}</p>
         {post.media_links && (
           <img className="post-photo" src={post.media_links} alt="post media" />
@@ -69,11 +75,11 @@ const SinglePost = ({ post }) => {
             ) : (
               <AiOutlineLike className="like-icon" onClick={handleLike} />
             )}
-            <p className="likes">{post.like_count}</p>
+            <p className="likes">{LikeCount}</p>
           </div>
-          <div className="comments">
+          <div className="comments" onClick={handleComment}>
             <NavLink to="/postcomments" className="navlink">
-              <FaRegComment className="comment-icon" onClick={handleComment} />
+              <FaRegComment className="comment-icon" />
               <p className="comments">{post.comment_count}</p>
             </NavLink>
           </div>
