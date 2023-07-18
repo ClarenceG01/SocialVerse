@@ -9,6 +9,7 @@ const { followRoute } = require("./src/routes/followRoute");
 const { notificationRoute } = require("./src/routes/notificationRoute");
 const { profileRoute } = require("./src/routes/profileRoute");
 const cors = require("cors");
+const { searchRoute } = require("./src/routes/searchRoute");
 
 const app = express();
 const port = process.env.PORT;
@@ -34,7 +35,8 @@ async function startApp() {
       replyRoute,
       followRoute,
       notificationRoute,
-      profileRoute
+      profileRoute,
+      searchRoute
     );
     app.get("/", (req, res) => {
       res.send("Hello World");
