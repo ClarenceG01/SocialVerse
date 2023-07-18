@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Extra from "./Extra";
 import { useNavigate } from "react-router-dom";
-import { Avatar, Button } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 import axios from "axios";
 import SideMenu from "./SideMenu";
 import Userposts from "./Userposts";
+import Button from "@mui/material/Button";
 
 const Userprofile = () => {
   const navigate = useNavigate();
@@ -41,7 +42,10 @@ const Userprofile = () => {
                   <p>{user.full_name}</p>
                   <p>@{user.username}</p>
                 </div>
-                <button onClick={editProfile}>Edit Profile</button>
+
+                <Button variant="contained" size="small" onClick={editProfile}>
+                  Edit Profile
+                </Button>
               </div>
               <div className="user-details">
                 <p>{user.bio}</p>
