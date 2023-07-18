@@ -3,7 +3,9 @@ import "../App.css";
 import { Avatar } from "@material-ui/core";
 import logo from "../images/logo.png";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Button from "@mui/material/Button";
+import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import "react-toastify/dist/ReactToastify.css";
 
 function CreatePost() {
@@ -50,32 +52,30 @@ function CreatePost() {
     <div className="createpost-component">
       <Avatar src={logo} />
       <form className="createpost-form" onSubmit={sendPost}>
-        <div className=".createpost-inputbox">
-          <textarea
-            className="createpost-textarea"
-            cols="33"
-            onChange={(e) => setPost(e.target.value)}
-            value={Post}
-            required
-          />
-          {/* <div
-            class="createpost-textarea"
-            contentEditable
-            onChange={(e) => setPost(e.target.value)}
-            value={Post}
-            required
-></div> */}
+        <textarea
+          className="createpost-textarea"
+          cols="33"
+          onChange={(e) => setPost(e.target.value)}
+          value={Post}
+          required
+        />
+        <div className="createpost-buttons">
           <input
+            id="upload"
             className="tweetBox__imageInput"
             placeholder="Attach an image"
             type="file"
             accept="image/png, image/jpeg,image/jpg,image/gif"
             onChange={(e) => uploadImage(e.target.files)}
+            hidden
           />
+          <label htmlFor="upload">
+            <AddPhotoAlternateOutlinedIcon sx={{ color: "rgb(25,118,210)" }} />
+          </label>
+          <Button variant="outlined" size="small" type="submit">
+            POST
+          </Button>
         </div>
-        <button type="submit" className="createpost-btn">
-          POST
-        </button>
       </form>
     </div>
   );

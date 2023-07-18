@@ -46,6 +46,7 @@ import Followers from "./components/Followers";
 import { ToastContainer } from "react-toastify";
 import PostComments from "./components/PostComments";
 import EditProfile from "./components/EditProfile";
+import CommentReplies from "./components/CommentReplies";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
         <Route path="/followers" element={<Followers />} />
         <Route path="/postcomments" element={<PostComments />} />
         <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/commentreplies" element={<CommentReplies />} />
       </Routes>
       <ToastContainer />
     </Router>

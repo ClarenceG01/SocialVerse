@@ -6,9 +6,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const CreateComment = () => {
-  const location = useLocation();
-  const post = location.state.post;
+const CreateComment = (props) => {
+  // const location = useLocation();
+  // const post = location.state.post;
+  const post = props.post;
+  console.log(post.post_id);
   const [Comment, setComment] = useState("");
   const sendComment = async (e) => {
     try {

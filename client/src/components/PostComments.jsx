@@ -6,6 +6,7 @@ import SinglePost from "./SinglePost";
 import axios from "axios";
 import SingleComment from "./SingleComment";
 import CreateComment from "./CreateComment";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const PostComments = () => {
   const location = useLocation();
@@ -20,6 +21,9 @@ const PostComments = () => {
     setComments(comments);
     console.log(comments);
   };
+  const goBack = () => {
+    window.history.back();
+  };
   useEffect(() => {
     getComments();
   }, []);
@@ -27,6 +31,9 @@ const PostComments = () => {
     <div className="Home-component">
       <SideMenu />
       <div className="PostComments-component">
+        <div className="back">
+          <ArrowBackIcon color="blue" onClick={goBack} />
+        </div>
         <SinglePost key={post.post_id} post={post} />
         <CreateComment post={post} />
         <div className="posts-comments">

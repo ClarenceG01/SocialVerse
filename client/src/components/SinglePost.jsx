@@ -4,11 +4,13 @@ import { Avatar } from "@material-ui/core";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import axios from "axios";
+import CreateComment from "./CreateComment";
 
 const SinglePost = ({ post }) => {
   const navigate = useNavigate();
   const [Like, setLike] = useState();
   const [LikeCount, setLikeCount] = useState(post.like_count);
+  const [CommentComponent, setCommentComponent] = useState(false);
   const checkLike = async () => {
     try {
       const response = await axios.post(
@@ -45,7 +47,9 @@ const SinglePost = ({ post }) => {
     checkLike();
   });
   const handleComment = () => {
-    navigate("/postcomments", { state: { post: post } });
+    // set CommentComponent to true
+    setCommentComponent(true);
+    console.log(CommentComponent);
   };
   return (
     <div className="post-container">
@@ -79,12 +83,13 @@ const SinglePost = ({ post }) => {
             )}
             <p className="likes">{LikeCount}</p>
           </div>
-          <div className="comments" onClick={handleComment}>
-            <NavLink to="/postcomments" className="navlink">
+          <div className="comments">
+            <NavLink className="navlink">
               <FaRegComment className="comment-icon" />
               <p className="comments">{post.comment_count}</p>
             </NavLink>
           </div>
+          {CommentComponent && <CreateComment />}
         </div>
       </div>
     </div>

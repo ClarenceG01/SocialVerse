@@ -9,7 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 const Logout = () => {
   const navigate = useNavigate();
   const handleLogout = async () => {
-    const results = await axios.get("http://localhost:5000/logout");
+    const results = await axios.get("http://localhost:5000/logout", {
+      withCredentials: true,
+    });
     console.log(results);
     if (results.data.success) {
       toast.success("Logged out successfully");
