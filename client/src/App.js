@@ -47,6 +47,7 @@ import { ToastContainer } from "react-toastify";
 import PostComments from "./components/PostComments";
 import EditProfile from "./components/EditProfile";
 import CommentReplies from "./components/CommentReplies";
+import Feed from "./components/Feed";
 
 function App() {
   return (
@@ -56,13 +57,15 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/home/*" element={<Home />} />
-        <Route path="/userprofile" element={<Userprofile />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/following" element={<Following />} />
-        <Route path="/followers" element={<Followers />} />
-        <Route path="/postcomments" element={<PostComments />} />
-        <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/home" element={<Home />}>
+          <Route path="/home/" element={<Feed />} />
+          <Route path="/home/logout" element={<Logout />} />
+          <Route path="/home/userprofile" element={<Userprofile />} />
+          <Route path="/home/postcomments" element={<PostComments />} />
+          <Route path="/home/followers" element={<Followers />} />
+          <Route path="/home/following" element={<Following />} />
+          <Route path="/home/editprofile" element={<EditProfile />} />
+        </Route>
         <Route path="/commentreplies" element={<CommentReplies />} />
       </Routes>
       <ToastContainer />
