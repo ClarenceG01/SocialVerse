@@ -30,8 +30,7 @@ const Userprofile = () => {
     getUserDetails();
   }, []);
   return (
-    <div className="Home-component">
-      <SideMenu />
+    <div className="Userprofile-component">
       {User.map((user) => {
         return (
           <section className="Userprofile-component">
@@ -66,7 +65,6 @@ const Userprofile = () => {
           </section>
         );
       })}
-      <Extra />
     </div>
   );
 };

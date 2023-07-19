@@ -34,11 +34,11 @@ const SideMenu = () => {
       </div>
       <div>
         <CgProfile />
-        <NavLink to="/userprofile">Profile</NavLink>
+        <NavLink to="/home/userprofile">Profile</NavLink>
       </div>
       <div>
         <LuLogOut />
-        <NavLink to="/logout">Logout</NavLink>
+        <NavLink to="/home/logout">Logout</NavLink>
       </div>
     </div>
   );
