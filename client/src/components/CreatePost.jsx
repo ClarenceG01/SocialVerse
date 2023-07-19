@@ -70,9 +70,12 @@ function CreatePost() {
             hidden
           />
           <label htmlFor="upload">
-            <AddPhotoAlternateOutlinedIcon sx={{ color: "rgb(25,118,210)" }} />
+            <AddPhotoAlternateOutlinedIcon
+              sx={{ color: "rgb(25,118,210)" }}
+              className="upload-icon"
+            />
           </label>
-          <Button variant="outlined" size="small" type="submit">
+          <Button variant="contained" size="small" type="submit">
             POST
           </Button>
         </div>

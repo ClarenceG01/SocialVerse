@@ -54,5 +54,26 @@ async function updatePassword(req, res, next) {
     console.log(error);
   }
 }
-
-module.exports = { updateProfile, updatePassword };
+async function getLoggedInUser(req, res, next) {
+  try {
+    const { pool } = req;
+    const { user_id } = req.params;
+    if (pool.connected) {
+      const results = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("getLoggedInUser");
+      console.log(results);
+      res.send(results);
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+}
+module.exports = { updateProfile, updatePassword, getLoggedInUser };

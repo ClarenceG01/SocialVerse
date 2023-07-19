@@ -296,9 +296,7 @@
   grid-area: feed;
 }
 .Extra-component {
-  background-color: red;
   grid-area: extra;
-  opacity: 0.1;
 }
 /* -----------------------FEED----------------------- */
 .Feed-component {
@@ -374,6 +372,9 @@
 }
 .createpost-buttons > * {
   margin: 0 0.5rem;
+}
+.upload-icon {
+  cursor: pointer;
 }
 /* ---------------------SINGLE POST---------------------------- */
 .post-container {
@@ -592,4 +593,77 @@
 .back {
   padding: 0.5rem 0;
   cursor: pointer;
+}
+/* -------------------------------------------EXTRA------------------------------- */
+.Extra-component {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  overflow-y: scroll;
+}
+.Extra-component::-webkit-scrollbar {
+  display: none;
+}
+.searchInputWrapper {
+  margin: 1rem auto;
+  width: 80%;
+  position: relative;
+}
+
+.searchInput {
+  width: 70%;
+  height: 2rem;
+  padding: 0 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--blue);
+  background-color: var(--white_text);
+  color: var(--dark_text);
+}
+
+::placeholder {
+  color: var(--white_text);
+}
+
+/* hide the placeholder text on focus */
+:focus::placeholder {
+  text-indent: -999px;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-radius: 2rem;
+  transform: scale(1.01);
+  transition: all 0.1s ease-in-out;
+}
+
+.searchInputIcon {
+  position: absolute;
+  right: 0.8rem;
+  top: 0.5rem;
+  color: #a1a1a1;
+  transition: all 0.1s ease-in-out;
+}
+
+.container:focus-within > .searchInputWrapper > .searchInputIcon {
+  right: 0.2rem;
+  border-radius: 2rem;
+}
+.searched-user {
+  background-color: white;
+}
+.suggested-user {
+  background-color: var(--dark_text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.suggested-user-details {
+  display: flex;
+  justify-content: flex-start;
+}
+.suggested-user .follow-button {
+  display: flex;
 }
