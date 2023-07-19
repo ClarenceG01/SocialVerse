@@ -50,25 +50,21 @@ const Login = () => {
           <img className="login-logo" src={logo} alt="" />
         </div>
         <div className="input-container">
-          <label>
-            Username or Email
-            <input
-              type="text"
-              value={credential}
-              onChange={(e) => setCredential(e.target.value)}
-              required
-            />
-          </label>
+          <label>Username or Email</label>
+          <input
+            type="text"
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+            required
+          />
 
-          <label>
-            Password
-            <input
-              type="password"
-              value={Password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
+          <label>Password</label>
+          <input
+            type="password"
+            value={Password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
         <div className="login-button">
           <button>Login</button>

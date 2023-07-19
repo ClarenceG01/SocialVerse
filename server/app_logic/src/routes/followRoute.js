@@ -4,11 +4,13 @@ const {
   followUser,
   followCount,
   unfollowUser,
+  notFollowed,
 } = require("../controllers/followController");
 const followRoute = express.Router();
 
-followRoute.post("/followuser", authorizeSession, followUser);
+followRoute.get("/followuser/:followed_id", authorizeSession, followUser);
 followRoute.get("/followcount", authorizeSession, followCount);
 followRoute.post("/unfollowuser", authorizeSession, unfollowUser);
+followRoute.get("/accountsnotfollowed", authorizeSession, notFollowed);
 
 module.exports = { followRoute };

@@ -48,8 +48,12 @@ const SinglePost = ({ post }) => {
   });
   const handleComment = () => {
     // set CommentComponent to true
-    setCommentComponent(true);
-    console.log(CommentComponent);
+    if (CommentComponent === false) {
+      setCommentComponent(true);
+    } else {
+      setCommentComponent(false);
+    }
+    console.log(`CommentComponent::::::${CommentComponent}`);
   };
   return (
     <div className="post-container">
@@ -85,7 +89,7 @@ const SinglePost = ({ post }) => {
           </div>
           <div className="comments">
             <NavLink className="navlink">
-              <FaRegComment className="comment-icon" />
+              <FaRegComment className="comment-icon" onClick={handleComment} />
               <p className="comments">{post.comment_count}</p>
             </NavLink>
           </div>

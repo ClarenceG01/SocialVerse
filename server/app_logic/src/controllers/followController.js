@@ -3,7 +3,7 @@ const { createClient } = require("redis");
 async function followUser(req, res, next) {
   try {
     const { pool } = req;
-    const { followed_id } = req.body;
+    const { followed_id } = req.params;
     const user_id = req.session?.user.user_id;
     if (pool.connected) {
       let results = await pool
@@ -81,4 +81,26 @@ async function unfollowUser(req, res, next) {
     console.log(error);
   }
 }
-module.exports = { followUser, followCount, unfollowUser };
+async function notFollowed(req, res, next) {
+  try {
+    const { pool } = req;
+    const user_id = req.session?.user.user_id;
+    if (pool.connected) {
+      let results = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("GetUsersNotFollowedByUser");
+      res.status(200).json({
+        message: "Users not followed by user retrieved",
+        results: results.recordset,
+      });
+    } else {
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { followUser, followCount, unfollowUser, notFollowed };

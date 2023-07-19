@@ -10,7 +10,6 @@ const CreateComment = (props) => {
   // const location = useLocation();
   // const post = location.state.post;
   const post = props.post;
-  console.log(post.post_id);
   const [Comment, setComment] = useState("");
   const sendComment = async (e) => {
     try {
