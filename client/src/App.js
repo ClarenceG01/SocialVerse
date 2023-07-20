@@ -65,8 +65,8 @@ function App() {
           <Route path="/home/followers" element={<Followers />} />
           <Route path="/home/following" element={<Following />} />
           <Route path="/home/editprofile" element={<EditProfile />} />
+          <Route path="/home/commentreplies" element={<CommentReplies />} />
         </Route>
-        <Route path="/commentreplies" element={<CommentReplies />} />
       </Routes>
       <ToastContainer />
     </Router>

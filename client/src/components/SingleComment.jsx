@@ -4,11 +4,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import axios from "axios";
+import CreateReply from "./CreateReply";
 
 const SingleComment = ({ comment }) => {
   const navigate = useNavigate();
   const [Like, setLike] = useState();
   const [LikeCount, setLikeCount] = useState(comment.likes_count);
+  const [ReplyComponent, setReplyComponent] = useState(false);
+  console.log(comment);
   const checkLike = async () => {
     try {
       const response = await axios.post(
@@ -40,14 +43,18 @@ const SingleComment = ({ comment }) => {
     }
   };
   const postClick = () => {
-    navigate("/commentreplies", { state: { comment: comment } });
-  };
-  const handleReply = () => {
-    navigate("/commentreplies", { state: { comment: comment } });
+    navigate("/home/commentreplies", { state: { comment: comment } });
   };
   useEffect(() => {
     checkLike();
   });
+  const handleReply = () => {
+    if (ReplyComponent === false) {
+      setReplyComponent(true);
+    } else {
+      setReplyComponent(false);
+    }
+  };
   return (
     <div className="post-container">
       <div className="post-header">
@@ -74,11 +81,12 @@ const SingleComment = ({ comment }) => {
             <p className="likes">{LikeCount}</p>
           </div>
           <div className="comments" onClick={handleReply}>
-            <NavLink to="/commentreplies" className="navlink">
+            <div onClick={postClick} className="navlink">
               <FaRegComment className="comment-icon" />
               <p className="comments">{comment.replies_count}</p>
-            </NavLink>
+            </div>
           </div>
+          {ReplyComponent && <CreateReply />}
         </div>
       </div>
     </div>

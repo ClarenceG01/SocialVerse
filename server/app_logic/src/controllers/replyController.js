@@ -2,7 +2,7 @@ const { createClient } = require("redis");
 async function likeReply(req, res, next) {
   try {
     const { pool } = req;
-    const { reply_id } = req.body;
+    const { reply_id } = req.params;
     const user_id = req.session?.user.user_id;
     if (pool.connected) {
       let results = await pool
@@ -51,4 +51,25 @@ async function getRepliesToComment(req, res, next) {
     console.log(error);
   }
 }
-module.exports = { likeReply, getRepliesToComment };
+async function checkLike(req, res, next) {
+  try {
+    const { pool } = req;
+    if (pool.connected) {
+      const { reply_id } = req.params;
+      const user_id = req.session?.user.user_id;
+      let response = await pool
+        .request()
+        .input("reply_id", reply_id)
+        .input("user_id", user_id)
+        .execute("GetLikesByReplyAndUser");
+      res.status(200).json({
+        success: true,
+        message: "Post liked",
+        response: response.recordset.length,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { likeReply, getRepliesToComment, checkLike };

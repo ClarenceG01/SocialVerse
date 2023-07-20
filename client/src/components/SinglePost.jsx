@@ -41,7 +41,7 @@ const SinglePost = ({ post }) => {
     }
   };
   const postClick = () => {
-    navigate("/postcomments", { state: { post: post } });
+    navigate("/home/postcomments", { state: { post: post } });
   };
   useEffect(() => {
     checkLike();
