@@ -1,4 +1,3 @@
-const { createClient } = require("redis");
 // posts of the logged in user
 async function getUserPosts(req, res, next) {
   try {

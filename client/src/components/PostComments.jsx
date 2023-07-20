@@ -28,21 +28,17 @@ const PostComments = () => {
     getComments();
   }, []);
   return (
-    <div className="Home-component">
-      <SideMenu />
-      <div className="PostComments-component">
-        <div className="back">
-          <ArrowBackIcon color="blue" onClick={goBack} />
-        </div>
-        <SinglePost key={post.post_id} post={post} />
-        <CreateComment post={post} />
-        <div className="posts-comments">
-          {Comments.map((comment) => {
-            return <SingleComment key={comment.comment_id} comment={comment} />;
-          })}
-        </div>
+    <div className="PostComments-component">
+      <div className="back">
+        <ArrowBackIcon color="blue" onClick={goBack} />
       </div>
-      <Extra />
+      <SinglePost key={post.post_id} post={post} />
+      <CreateComment post={post} />
+      <div className="posts-comments">
+        {Comments.map((comment) => {
+          return <SingleComment key={comment.comment_id} comment={comment} />;
+        })}
+      </div>
     </div>
   );
 };
