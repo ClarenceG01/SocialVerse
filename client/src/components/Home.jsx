@@ -14,8 +14,9 @@ const Home = () => {
   return (
     <div className="Home-component">
       <SideMenu />
-      <Outlet />
+
       <Extra />
+      <Outlet />
     </div>
   );
 };

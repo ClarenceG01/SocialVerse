@@ -27,13 +27,16 @@ const PostComments = () => {
   useEffect(() => {
     getComments();
   }, []);
+  const refreshComments = () => {
+    getComments();
+  };
   return (
     <div className="PostComments-component">
       <div className="back">
         <ArrowBackIcon color="blue" onClick={goBack} />
       </div>
       <SinglePost key={post.post_id} post={post} />
-      <CreateComment post={post} />
+      <CreateComment post={post} refreshComments={refreshComments} />
       <div className="posts-comments">
         {Comments.map((comment) => {
           return <SingleComment key={comment.comment_id} comment={comment} />;

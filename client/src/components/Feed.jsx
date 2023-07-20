@@ -13,12 +13,16 @@ const Feed = () => {
     console.log(response);
   };
 
+  const refreshFeed = () => {
+    getFollowingPosts();
+  };
   useEffect(() => {
     getFollowingPosts();
   }, []);
+
   return (
     <div className="Feed-component">
-      <CreatePost />
+      <CreatePost refreshFeed={refreshFeed} />
       {Posts.map((post) => {
         return <SinglePost key={post.post_id} post={post} />;
       })}

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Avatar } from "@material-ui/core";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const CreateReply = ({ comment }) => {
+const CreateReply = ({ comment, refreshReplies }) => {
   const [Reply, setReply] = useState("");
   console.log(comment);
   const handleReply = (e) => {
@@ -23,13 +25,16 @@ const CreateReply = ({ comment }) => {
         input_data,
         { withCredentials: true }
       );
-      console.log(response);
+      const message = response.data.message;
+      if (message == "Reply posted") {
+        toast.success("Reply posted");
+        refreshReplies();
+      }
       console.log(`create post response` + response);
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <div className="createcomment-box">
       <form onSubmit={sendReply}>

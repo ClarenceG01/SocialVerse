@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lunasima&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +15,7 @@
   --white_text: rgb(255, 255, 255);
   --dark_text: rgb(107, 114, 128);
   --border: rgb(209, 213, 219);
+  --black: rgb(12, 12, 12);
 }
 /* -----------------------LANDING PAGE------------------------- */
 .LandingPage-component {
@@ -291,8 +294,6 @@
 }
 .Sidemenu-component {
   grid-area: side;
-  background-color: red;
-  opacity: 0.3;
 }
 .Feed-component {
   grid-area: feed;
@@ -453,14 +454,23 @@
   align-items: center;
 }
 .Sidemenu-component > * {
-  margin: 1rem;
+  margin: 1rem 0;
 }
 .Sidemenu-component a {
+  font-size: 1.1rem;
   text-decoration: none;
-  color: var(--dark_text);
+  color: var(--black);
 }
 .sv-logo img {
   width: 200px;
+}
+.link-box {
+  display: flex;
+  align-items: center;
+  min-width: 7rem;
+}
+.link-box .icon {
+  margin-right: 1rem;
 }
 /* ------------------------------------USERPROFILE-------------------------------- */
 .Userprofile-component {
@@ -475,7 +485,6 @@
   display: none;
 }
 .profile-top {
-  margin-top: 1rem;
   padding: 1rem 2rem;
   position: sticky;
   display: flex;
@@ -483,11 +492,11 @@
   justify-content: space-between;
   top: 0;
   border: 1px solid var(--border);
-  z-index: 3;
-  -webkit-backdrop-filter: blur(4px);
-  -o-backdrop-filter: blur(4px);
-  -moz-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+  z-index: 9999;
+  -webkit-backdrop-filter: blur(100px);
+  -o-backdrop-filter: blur(100px);
+  -moz-backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px);
 }
 .profile-top p {
   font-family: "Inter Tight", sans-serif;
@@ -653,14 +662,46 @@
   right: 0.2rem;
   border-radius: 2rem;
 }
-.searched-user {
-  background-color: white;
+.search-results {
+  background-color: rgb(247, 249, 249);
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  width: 80%;
+  margin: 1rem auto;
 }
-.suggested-user {
-  background-color: var(--dark_text);
+.searched-user {
+  border-top: 1px solid var(--dark_text);
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0.2rem auto;
+}
+.search-results h1 {
+  color: var(--black);
+}
+.suggested-accounts {
+  background-color: rgb(247, 249, 249);
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  width: 80%;
+  margin: 1rem auto;
+}
+.suggested-title {
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.suggested-user {
+  border-top: 1px solid var(--dark_text);
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem auto;
 }
 .suggested-user-details {
   display: flex;
@@ -668,4 +709,16 @@
 }
 .suggested-user .follow-button {
   display: flex;
+}
+/* --------------------------------------------NOTIFICATIONS COMPONENT--------------------------------------- */
+.Notification-component {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.Notification-component::-webkit-scrollbar {
+  display: none;
 }

@@ -48,6 +48,7 @@ import PostComments from "./components/PostComments";
 import EditProfile from "./components/EditProfile";
 import CommentReplies from "./components/CommentReplies";
 import Feed from "./components/Feed";
+import Notifications from "./components/Notifications";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
           <Route path="/home/following" element={<Following />} />
           <Route path="/home/editprofile" element={<EditProfile />} />
           <Route path="/home/commentreplies" element={<CommentReplies />} />
+          <Route path="/home/notifications" element={<Notifications />} />
         </Route>
       </Routes>
       <ToastContainer />
