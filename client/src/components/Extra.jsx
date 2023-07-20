@@ -64,7 +64,8 @@ const Extra = () => {
         ) : (
           searchResults.map((account) => {
             return (
-              <div>
+              <div className="searched-user">
+                <h1>Search</h1>
                 <div className="searched-user">
                   <div className="suggested-user-details">
                     <Avatar src={account.profile_picture} />
@@ -74,19 +75,19 @@ const Extra = () => {
                     </div>
                   </div>
                 </div>
-                <hr />
               </div>
             );
           })
         )}
       </div>
       <div className="suggested-accounts">
+        <p className="suggested-title">Suggested Follows</p>
         {followSuggestions.map((account) => {
           return (
             <div>
               <div className="suggested-user">
                 <div className="suggested-user-details">
-                  <Avatar src={account.profile_picture} />
+                  <Avatar src={account.profile_picture} alt="User dp" />
                   <div className="details">
                     <p>@{account.username}</p>
                     <p>{account.full_name}</p>
@@ -101,7 +102,6 @@ const Extra = () => {
                   Follow
                 </Button>
               </div>
-              <hr />
             </div>
           );
         })}

@@ -25,4 +25,25 @@ async function getUserNotifications(req, res, next) {
     res.send(error.originalError.info.message);
   }
 }
-module.exports = { getUserNotifications };
+async function markAsRead(req, res, next) {
+  try {
+    const { pool } = req;
+    const { notify_id } = req.params;
+    if (pool.connected) {
+      const results = await pool
+        .request()
+        .input("notify_id", notify_id)
+        .execute("setSeenBy");
+      console.log(results);
+      res.json(results);
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Internal server error",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { getUserNotifications, markAsRead };
