@@ -29,13 +29,16 @@ const CommentReplies = () => {
   useEffect(() => {
     getReplies();
   }, []);
+  const refreshReplies = () => {
+    getReplies();
+  };
   return (
     <div className="CommentReplies-component">
       <div className="back">
         <ArrowBackIcon color="blue" onClick={goBack} />
       </div>
       <SingleComment key={comment.comment_id} comment={comment} />
-      <CreateReply comment={comment} />
+      <CreateReply comment={comment} refreshReplies={refreshReplies} />
 
       <div className="posts-comments">
         {Replies.map((reply) => {

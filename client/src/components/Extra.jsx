@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Avatar, Button } from "@material-ui/core";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Extra = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,12 +41,19 @@ const Extra = () => {
           withCredentials: true,
         }
       );
-      console.log(response);
+      const message = response.data.message;
+      if (message === "User followed") {
+        toast.success("User followed");
+        refreshFeed();
+      }
     } catch (error) {}
   };
   useEffect(() => {
     getFollowSuggestions();
   }, []);
+  const refreshFeed = () => {
+    getFollowSuggestions();
+  };
   return (
     <div className="Extra-component">
       <div className="searchInputWrapper">

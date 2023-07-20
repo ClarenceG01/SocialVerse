@@ -6,10 +6,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const CreateComment = (props) => {
+const CreateComment = ({ post, refreshComments }) => {
   // const location = useLocation();
   // const post = location.state.post;
-  const post = props.post;
   const [Comment, setComment] = useState("");
   const sendComment = async (e) => {
     try {
@@ -28,6 +27,7 @@ const CreateComment = (props) => {
       );
       if (response.data.message === "Post commented") {
         toast.success("Comment posted");
+        refreshComments();
       }
     } catch (error) {
       console.log(error);

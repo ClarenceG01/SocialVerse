@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import "react-toastify/dist/ReactToastify.css";
 
-function CreatePost() {
+function CreatePost({ refreshFeed }) {
   const [Post, setPost] = useState("");
   const [Media, setMedia] = useState("");
 
@@ -43,6 +43,7 @@ function CreatePost() {
       );
       if (response.data.message === "Post created") {
         toast.success("Post created successfully");
+        refreshFeed();
       }
     } catch (error) {
       console.log(error);
