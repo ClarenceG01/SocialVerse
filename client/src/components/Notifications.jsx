@@ -1,20 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import SingleNotification from "./SingleNotification";
 
 const Notifications = () => {
+  const [Notifications, setNotifications] = useState([]);
   const getUserNotifications = async () => {
     const results = await axios.get("http://localhost:5050/notifications", {
       withCredentials: true,
     });
-    console.log(results);
+    const notifications = results.data.results;
+    setNotifications(notifications);
   };
-  useEffect = () => {
+  console.log(Response);
+  console.log(Notifications);
+  useEffect(() => {
     getUserNotifications();
-  };
+  }, []);
+
   return (
     <div className="Notification-component">
       <div className="notification-container">
-        <div className="single-notification"></div>
+        {Notifications.map((notification) => {
+          return (
+            <SingleNotification
+              key={notification.notify_id}
+              notification={notification}
+            />
+          );
+        })}
       </div>
     </div>
   );

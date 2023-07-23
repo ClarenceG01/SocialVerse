@@ -74,13 +74,12 @@ const Extra = () => {
           searchResults.map((account) => {
             return (
               <div className="searched-user">
-                <h1>Search</h1>
                 <div className="searched-user">
                   <div className="suggested-user-details">
                     <Avatar src={account.profile_picture} />
                     <div className="details">
-                      <p>@{account.username}</p>
                       <p>{account.full_name}</p>
+                      <p>@{account.username}</p>
                     </div>
                   </div>
                 </div>
@@ -98,8 +97,8 @@ const Extra = () => {
                 <div className="suggested-user-details">
                   <Avatar src={account.profile_picture} alt="User dp" />
                   <div className="details">
-                    <p>@{account.username}</p>
                     <p>{account.full_name}</p>
+                    <p>@{account.username}</p>
                   </div>
                 </div>
                 <Button
