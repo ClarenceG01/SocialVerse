@@ -66,7 +66,7 @@ function CreatePost({ refreshFeed }) {
             className="tweetBox__imageInput"
             placeholder="Attach an image"
             type="file"
-            accept="image/png, image/jpeg,image/jpg,image/gif"
+            accept="image/png, image/jpeg,image/jpg,image/gif,video/mp4"
             onChange={(e) => uploadImage(e.target.files)}
             hidden
           />

@@ -381,6 +381,14 @@
 .upload-icon {
   cursor: pointer;
 }
+.media-preview {
+}
+.media-preview img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+}
 /* ---------------------SINGLE POST---------------------------- */
 .post-container {
   background-color: var(--faded-aqua);
@@ -480,18 +488,19 @@
   font-size: 1rem;
   color: var(--dark_text);
 }
-.link-box:hover {
-  border-radius: 10px;
-  background-color: var(--faded-aqua);
-  transition: 0.1s;
-}
 .link-box.active {
   color: black;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 5rem;
 }
 .link-box .icon {
   margin-right: 1rem;
+}
+#search {
+  display: none;
+}
+.add-icon {
+  display: none;
 }
 /* ------------------------------------USERPROFILE-------------------------------- */
 .Userprofile-component {
@@ -748,4 +757,106 @@
   display: none;
 }
 .notification-container {
+}
+/* media queries */
+@media screen and (max-width: 1200px) {
+  .sv-logo {
+    margin: 0 2.7rem 1rem 0;
+    width: 50px;
+  }
+  .link-box {
+    margin: 0 auto;
+  }
+  .icon:hover {
+    border-radius: 10px;
+    background-color: var(--faded-aqua);
+    transition: 0.1s;
+  }
+  .link-box.active {
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .navlink-word {
+    display: none;
+  }
+  .Sidemenu-component {
+    width: 4.2rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .Home-component {
+    display: grid;
+    grid-template-areas:
+      "side feed"
+      "side feed";
+    /* edit the size of the areas */
+    grid-template-columns: 0.1fr 1fr;
+    scroll-behavior: smooth;
+  }
+  .Sidemenu-component {
+    grid-area: side;
+    margin: 0;
+    width: 4.2rem;
+  }
+  .Feed-component {
+    grid-area: feed;
+    margin: 0;
+    width: 100%;
+    background-color: var(--faded-aqua);
+  }
+  .Extra-component {
+    display: none;
+  }
+  #search {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .Home-component {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    scroll-behavior: smooth;
+    height: 100vh;
+  }
+
+  .Sidemenu-component {
+    grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--white_text);
+    z-index: 9999;
+    grid-row: 2/3;
+    width: 100%;
+    padding: 0.5rem 0.3rem;
+  }
+  .Feed-component {
+    width: 100%;
+    grid-row: 1/2;
+    height: fit-content;
+    overflow-y: scroll;
+  }
+  .Userprofile-component {
+    width: 100%;
+    grid-row: 1/2;
+    height: fit-content;
+    overflow-y: scroll;
+  }
+  .link-box {
+    padding: 0;
+    min-width: 1px;
+  }
+  .add-icon {
+    display: block;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 3rem;
+    z-index: 9999;
+  }
+  .sv-logo {
+    display: none;
+  }
 }
