@@ -3,8 +3,12 @@ import SideMenu from "./SideMenu";
 import Extra from "./Extra";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EditProfile = () => {
+  const navigate = useNavigate();
   const [Fullname, setFullname] = useState("");
   const [Bio, setBio] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
@@ -76,7 +80,13 @@ const EditProfile = () => {
           withCredentials: true,
         }
       );
-      console.log(response);
+      if (response.data.message === "Profile Updated") {
+        toast.success("Profile Updated");
+        // take time before navigation
+        setTimeout(() => {
+          navigate("/home/userprofile");
+        }, 3500);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -85,45 +95,41 @@ const EditProfile = () => {
     getUserDetails();
   }, []);
   return (
-    <div className="Home-component">
-      <SideMenu />
-      <div className="EditProfile-component">
-        <div className="back">
-          <ArrowBackIcon color="blue" onClick={goBack} />
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="fullname">Fullname</label>
-            <input
-              type="text"
-              id="fullname"
-              placeholder="Enter your fullname"
-              value={Fullname}
-              onChange={handleFullnameChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="bio">Bio</label>
-            <textarea
-              id="bio"
-              placeholder="Enter your bio"
-              value={Bio}
-              onChange={handleBioChange}
-            ></textarea>
-          </div>
-          <div>
-            <label htmlFor="profilePicture">Profile Picture</label>
-            <input
-              type="file"
-              name="profilePicture"
-              accept="image/*"
-              onChange={handleProfilePictureChange}
-            />
-          </div>
-          <button type="submit">Save</button>
-        </form>
+    <div className="EditProfile-component">
+      <div className="back">
+        <ArrowBackIcon color="blue" onClick={goBack} />
       </div>
-      <Extra />
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="fullname">Fullname</label>
+          <input
+            type="text"
+            id="fullname"
+            placeholder="Enter your fullname"
+            value={Fullname}
+            onChange={handleFullnameChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="bio">Bio</label>
+          <textarea
+            id="bio"
+            placeholder="Enter your bio"
+            value={Bio}
+            onChange={handleBioChange}
+          ></textarea>
+        </div>
+        <div>
+          <label htmlFor="profilePicture">Profile Picture</label>
+          <input
+            type="file"
+            name="profilePicture"
+            accept="image/*"
+            onChange={handleProfilePictureChange}
+          />
+        </div>
+        <button type="submit">Save</button>
+      </form>
     </div>
   );
 };

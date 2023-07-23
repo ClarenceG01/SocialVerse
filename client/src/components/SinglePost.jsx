@@ -63,37 +63,46 @@ const SinglePost = ({ post }) => {
           src={post.profile_picture}
           alt="profile picture"
         />
+      </div>
+      <div className="post-body">
         <div className="user-details">
           <p className="fullname">{post.full_name}</p>
           <p className="username">@{post.username}</p>
         </div>
-      </div>
-      <div className="post-body" onClick={postClick}>
-        <p>{post.post_text}</p>
-        {post.media_links && (
-          <img className="post-photo" src={post.media_links} alt="post media" />
-        )}
-      </div>
-      <div className="post-footer">
-        <div className="reactions">
-          <div className="likes">
-            {Like === 1 ? (
-              <AiOutlineLike
-                className="like-icon filled"
-                onClick={handleLike}
-              />
-            ) : (
-              <AiOutlineLike className="like-icon" onClick={handleLike} />
-            )}
-            <p className="likes">{LikeCount}</p>
+        <div className="post-content" onClick={postClick}>
+          <p>{post.post_text}</p>
+          {post.media_links && (
+            <img
+              className="post-photo"
+              src={post.media_links}
+              alt="post media"
+            />
+          )}
+        </div>
+        <div className="post-footer">
+          <div className="reactions">
+            <div className="likes">
+              {Like === 1 ? (
+                <AiOutlineLike
+                  className="like-icon filled"
+                  onClick={handleLike}
+                />
+              ) : (
+                <AiOutlineLike className="like-icon" onClick={handleLike} />
+              )}
+              <p className="likes">{LikeCount}</p>
+            </div>
+            <div className="comments">
+              <NavLink className="navlink">
+                <FaRegComment
+                  className="comment-icon"
+                  onClick={handleComment}
+                />
+                <p className="comments">{post.comment_count}</p>
+              </NavLink>
+            </div>
+            {CommentComponent && <CreateComment />}
           </div>
-          <div className="comments">
-            <NavLink className="navlink">
-              <FaRegComment className="comment-icon" onClick={handleComment} />
-              <p className="comments">{post.comment_count}</p>
-            </NavLink>
-          </div>
-          {CommentComponent && <CreateComment />}
         </div>
       </div>
     </div>

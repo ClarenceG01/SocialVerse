@@ -24,7 +24,7 @@ const Userprofile = () => {
     navigate("/followers");
   };
   const editProfile = async () => {
-    navigate("/editprofile");
+    navigate("/home/editprofile");
   };
   useEffect(() => {
     getUserDetails();
@@ -42,7 +42,12 @@ const Userprofile = () => {
                   <p>@{user.username}</p>
                 </div>
 
-                <Button variant="contained" size="small" onClick={editProfile}>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  type="submit"
+                  onClick={editProfile}
+                >
                   Edit Profile
                 </Button>
               </div>
