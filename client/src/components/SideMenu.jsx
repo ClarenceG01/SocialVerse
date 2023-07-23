@@ -5,6 +5,9 @@ import { ImHome3 } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
 import { LuLogOut } from "react-icons/lu";
 import { MdOutlineNotificationsNone } from "react-icons/md";
+import { IoSearch } from "react-icons/io5";
+import { AiFillPlusCircle } from "react-icons/ai";
+import { IoMdSettings } from "react-icons/io";
 
 const SideMenu = () => {
   const navigate = useNavigate();
@@ -16,6 +19,10 @@ const SideMenu = () => {
       navigate("/home");
     }
   };
+  const backToTop = () => {
+    navigate("/home");
+    window.scrollTo(0, 0);
+  };
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
@@ -25,31 +32,64 @@ const SideMenu = () => {
         <img src={logo} alt="logo" />
       </div>
       <div className={`link-box ${isActiveLink("/home") ? "active" : ""}`}>
-        <ImHome3 className="icon" />
-        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/home">
+          <ImHome3 className="icon" />
+          <span className="navlink-word">Home</span>
+        </NavLink>
       </div>
       <div
         className={`link-box ${
           isActiveLink("/home/userprofile") ? "active" : ""
         }`}
       >
-        <CgProfile className="icon" />
-        <NavLink to="/home/userprofile">Profile</NavLink>
+        <NavLink to="/home/userprofile">
+          <CgProfile className="icon" />
+          <span className="navlink-word">Profile</span>
+        </NavLink>
       </div>
       <div
-        className={`link-box ${isActiveLink("/home/logout") ? "active" : ""}`}
+        id="search"
+        className={`link-box ${
+          isActiveLink("/home/notifications") ? "active" : ""
+        }`}
       >
-        <LuLogOut className="icon" />
-        <NavLink to="/home/logout">Logout</NavLink>
+        <NavLink to="/home/search">
+          <IoSearch className="icon" />
+          <span className="navlink-word">Search</span>
+        </NavLink>
       </div>
       <div
         className={`link-box ${
           isActiveLink("/home/notifications") ? "active" : ""
         }`}
       >
-        <MdOutlineNotificationsNone className="icon" />
-        <NavLink to="/home/notifications">Notification</NavLink>
+        <NavLink to="/home/notifications">
+          <MdOutlineNotificationsNone className="icon" />
+          <span className="navlink-word">Notifications</span>
+        </NavLink>
       </div>
+      <div
+        className={`link-box ${isActiveLink("/home/logout") ? "active" : ""}`}
+      >
+        <NavLink to="/home/settings">
+          <IoMdSettings className="icon" />
+          <span className="navlink-word">Settings</span>
+        </NavLink>
+      </div>
+      <div
+        className={`link-box ${isActiveLink("/home/logout") ? "active" : ""}`}
+      >
+        <NavLink to="/home/logout">
+          <LuLogOut className="icon" />
+          <span className="navlink-word">Logout</span>
+        </NavLink>
+      </div>
+      <AiFillPlusCircle
+        className="add-icon"
+        color="#1976d2"
+        size="2rem"
+        onClick={backToTop}
+      />
     </div>
   );
 };

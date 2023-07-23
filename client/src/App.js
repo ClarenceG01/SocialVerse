@@ -49,6 +49,8 @@ import EditProfile from "./components/EditProfile";
 import CommentReplies from "./components/CommentReplies";
 import Feed from "./components/Feed";
 import Notifications from "./components/Notifications";
+import Search from "./components/Search";
+import Settings from "./components/settings";
 
 function App() {
   return (
@@ -68,6 +70,8 @@ function App() {
           <Route path="/home/editprofile" element={<EditProfile />} />
           <Route path="/home/commentreplies" element={<CommentReplies />} />
           <Route path="/home/notifications" element={<Notifications />} />
+          <Route path="/home/search" element={<Search />} />
+          <Route path="/home/settings" element={<Settings />} />
         </Route>
       </Routes>
       <ToastContainer />
