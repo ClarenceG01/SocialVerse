@@ -3,8 +3,10 @@ import axios from "axios";
 import { Avatar, Button } from "@material-ui/core";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Extra = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [followSuggestions, setFollowSuggestions] = useState([]);
@@ -54,13 +56,16 @@ const Extra = () => {
   const refreshFeed = () => {
     getFollowSuggestions();
   };
+  const viewUser = () => {
+    navigate("/userprofile");
+  };
   return (
     <div className="Extra-component">
       <div className="searchInputWrapper">
         <input
           className="searchInput"
           type="search"
-          placeholder="Search for a user"
+          placeholder="Search user"
           value={searchTerm}
           onChange={handleSearch}
         />
@@ -68,19 +73,17 @@ const Extra = () => {
       <div className="search-results">
         {searchResults.lenght === 0 ? (
           <div className="searched-user">
-            <h1>Search</h1>
+            <span className="no-results">Search</span>
           </div>
         ) : (
           searchResults.map((account) => {
             return (
               <div className="searched-user">
-                <div className="searched-user">
-                  <div className="suggested-user-details">
-                    <Avatar src={account.profile_picture} />
-                    <div className="details">
-                      <p>{account.full_name}</p>
-                      <p>@{account.username}</p>
-                    </div>
+                <div className="suggested-user-details">
+                  <Avatar className="search-dp" src={account.profile_picture} />
+                  <div className="details">
+                    <p>{account.full_name}</p>
+                    <p>@{account.username}</p>
                   </div>
                 </div>
               </div>
@@ -94,7 +97,7 @@ const Extra = () => {
           return (
             <div>
               <div className="suggested-user">
-                <div className="suggested-user-details">
+                <div onClick={viewUser} className="suggested-user-details">
                   <Avatar src={account.profile_picture} alt="User dp" />
                   <div className="details">
                     <p>{account.full_name}</p>

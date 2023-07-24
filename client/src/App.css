@@ -285,7 +285,7 @@
 }
 /* -------------------------HOME----------------------- */
 .Home-component {
-  background-color: var(--white_text);
+  background-color: var(--faded-aqua);
   height: 100vh;
   display: grid;
   grid-template-areas:
@@ -319,9 +319,7 @@
 /* --------------------------CREATE POST----------------------------- */
 .createpost-component {
   padding: 1rem 0.5rem;
-  position: sticky;
-  top: 0;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--border);
   z-index: 9999;
   -webkit-backdrop-filter: blur(100px);
   -o-backdrop-filter: blur(100px);
@@ -400,17 +398,16 @@
 /* ---------------------SINGLE POST---------------------------- */
 .post-container {
   background-color: var(--white_text);
-  width: 95%;
   height: fit-content;
-  margin: 0 auto;
+  margin: 0.5rem 0;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   cursor: pointer;
   display: flex;
-  border-top: 1px solid var(--blue);
-  border-left: 1px solid var(--blue);
-  border-right: 1px solid var(--blue);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 .post-container:hover {
   background-color: var(--hover-faded-aqua);
@@ -476,6 +473,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--white_text);
 }
 .Sidemenu-component > * {
   margin: 0.3rem 0;
@@ -500,7 +498,7 @@
   color: var(--dark_text);
 }
 .link-box.active {
-  color: black;
+  color: var(--blue);
   font-weight: bold;
   font-size: 5rem;
 }
@@ -510,9 +508,7 @@
 #search {
   display: none;
 }
-#add-icon {
-  display: none;
-}
+
 /* ------------------------------------USERPROFILE-------------------------------- */
 .Userprofile-component {
   display: flex;
@@ -648,6 +644,7 @@
 }
 /* -------------------------------------------EXTRA------------------------------- */
 .Extra-component {
+  background-color: var(--white_text);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -704,7 +701,7 @@
   border-radius: 2rem;
 }
 .search-results {
-  background-color: rgb(247, 249, 249);
+  background-color: var(--faded-aqua);
   padding: 1rem;
   border: none;
   border-radius: 1rem;
@@ -719,8 +716,12 @@
   justify-content: space-between;
   margin: 0.2rem auto;
 }
-.search-results h1 {
+.search-results span {
   color: var(--black);
+  font-family: "Inter Tight", sans-serif;
+}
+.search-dp {
+  margin-right: 0.5rem;
 }
 .suggested-accounts {
   background-color: var(--faded-aqua);
@@ -769,6 +770,30 @@
 }
 .notification-container {
 }
+.Createpost-popup {
+  z-index: 9999;
+}
+/* -----------------------------SETTINGS COMPONENT------------------------------- */
+.setting-component {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.setting-component::-webkit-scrollbar {
+  display: none;
+}
+/* ---------------------------------------CHANGE PASSWROD COMPONENT--------------------------- */
+.changepassword-component {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
 /* media queries */
 @media screen and (max-width: 1200px) {
   .sv-logo {
@@ -812,7 +837,7 @@
   }
   .Feed-component {
     grid-area: feed;
-    margin: 0;
+    margin: 0 auto;
     width: 100%;
     background-color: var(--faded-aqua);
   }
@@ -866,6 +891,8 @@
     right: 1.5rem;
     bottom: 3rem;
     z-index: 9999;
+    color: #1976d2;
+    font-size: 2rem;
   }
   .sv-logo {
     display: none;

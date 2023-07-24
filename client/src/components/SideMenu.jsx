@@ -69,7 +69,7 @@ const SideMenu = () => {
         </NavLink>
       </div>
       <div
-        className={`link-box ${isActiveLink("/home/logout") ? "active" : ""}`}
+        className={`link-box ${isActiveLink("/home/settings") ? "active" : ""}`}
       >
         <NavLink to="/home/settings">
           <IoMdSettings className="icon" />
@@ -84,17 +84,15 @@ const SideMenu = () => {
           <span className="navlink-word">Logout</span>
         </NavLink>
       </div>
-      <div
-        className={`link-box ${isActiveLink("/home/logout") ? "active" : ""}`}
-      >
-        <AiFillPlusCircle
-          className="icon"
-          id="add-icon"
-          color="#1976d2"
-          size="2rem"
-          onClick={backToTop}
-        />
-        <span className="navlink-word">Post</span>
+      <div className={`link-box ${isActiveLink("/home/") ? "active" : ""}`}>
+        <NavLink to="/home/">
+          <AiFillPlusCircle
+            className="icon"
+            id="add-icon"
+            onClick={backToTop}
+          />
+          <span className="navlink-word">Create Post</span>
+        </NavLink>
       </div>
     </div>
   );

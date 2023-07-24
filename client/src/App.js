@@ -51,6 +51,7 @@ import Feed from "./components/Feed";
 import Notifications from "./components/Notifications";
 import Search from "./components/Search";
 import Settings from "./components/settings";
+import ChangePassword from "./components/ChangePassword";
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
           <Route path="/home/notifications" element={<Notifications />} />
           <Route path="/home/search" element={<Search />} />
           <Route path="/home/settings" element={<Settings />} />
+          <Route path="/home/changepassword" element={<ChangePassword />} />
         </Route>
       </Routes>
       <ToastContainer />
