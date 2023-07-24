@@ -84,12 +84,18 @@ const SideMenu = () => {
           <span className="navlink-word">Logout</span>
         </NavLink>
       </div>
-      <AiFillPlusCircle
-        className="add-icon"
-        color="#1976d2"
-        size="2rem"
-        onClick={backToTop}
-      />
+      <div
+        className={`link-box ${isActiveLink("/home/logout") ? "active" : ""}`}
+      >
+        <AiFillPlusCircle
+          className="icon"
+          id="add-icon"
+          color="#1976d2"
+          size="2rem"
+          onClick={backToTop}
+        />
+        <span className="navlink-word">Post</span>
+      </div>
     </div>
   );
 };

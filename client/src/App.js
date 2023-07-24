@@ -56,9 +56,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<LandingPage />}>
+          <Route path="/" element={<SignUp />} />
+          <Route path="/land/login" element={<Login />} />
+        </Route>
         <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<Home />}>
           <Route path="/home/" element={<Feed />} />

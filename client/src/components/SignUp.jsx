@@ -50,7 +50,7 @@ const SignUp = () => {
         </div>
         <div className="signup-link">
           <p>
-            Already have an account? <NavLink to="/login">Log In</NavLink>
+            Already have an account? <NavLink to="/land/login">Log In</NavLink>
           </p>
         </div>
       </form>
