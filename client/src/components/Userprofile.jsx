@@ -10,18 +10,24 @@ import Button from "@mui/material/Button";
 const Userprofile = () => {
   const navigate = useNavigate();
   const [User, setUser] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
   const getUserDetails = async () => {
     const response = await axios.get("http://localhost:5050/followcount", {
       withCredentials: true,
     });
-    console.log(response.data);
     setUser(response.data.results);
+    setFollowers(response.data.followers);
+    setFollowing(response.data.following);
   };
   const getFollowing = async () => {
-    navigate("/following");
+    // pass two states to the following page, user and function
+    navigate("/home/following", {
+      state: { user: following },
+    });
   };
   const getFollowers = async () => {
-    navigate("/followers");
+    navigate("/home/followers", { state: { user: followers } });
   };
 
   useEffect(() => {
@@ -37,7 +43,7 @@ const Userprofile = () => {
                 <div className="right">
                   <Avatar src={user.profile_picture} />
                   <p>{user.full_name}</p>
-                  <p>@{user.username}</p>
+                  <p>@{user.following_count}</p>
                 </div>
               </div>
               <div className="user-details">

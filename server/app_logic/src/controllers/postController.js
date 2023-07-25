@@ -99,7 +99,7 @@ async function getSinglePost(req, res, next) {
 async function deletePost(req, res, next) {
   try {
     const { pool } = req;
-    const { post_id } = req.body;
+    const { post_id } = req.params;
     const user_id = req.session?.user.user_id;
     if (pool.connected) {
       let results = await pool

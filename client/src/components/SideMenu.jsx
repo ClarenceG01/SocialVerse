@@ -98,11 +98,11 @@ const SideMenu = () => {
           <span className="navlink-word">Create Post</span>
         </NavLink>
       </div>
-      <div className="theme-toggle">
+      {/* <div className="theme-toggle">
         <button onClick={handleThemeToggle}>
           Toggle Theme ({theme === "light" ? "Dark" : "Light"})
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

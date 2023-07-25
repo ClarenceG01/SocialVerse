@@ -69,7 +69,7 @@ const Search = () => {
         onChange={handleSearch}
       />
       <div className="search-results">
-        {searchResults.lenght === 0 ? (
+        {searchResults.length === 0 ? (
           <div className="searched-user">
             <span className="no-results">Search</span>
           </div>

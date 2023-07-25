@@ -32,12 +32,12 @@
 
 // export default App;
 
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
-import Profile from "./components/profile";
+import Profile from "./components/Profile";
 import Home from "./components/Home";
 import Userprofile from "./components/Userprofile";
 import Logout from "./components/logout";
@@ -53,6 +53,7 @@ import Search from "./components/Search";
 import Settings from "./components/settings";
 import ChangePassword from "./components/ChangePassword";
 import DeleteAccount from "./components/DeleteAccount";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
           <Route path="/home/settings" element={<Settings />} />
           <Route path="/home/changepassword" element={<ChangePassword />} />
           <Route path="/home/deleteaccount" element={<DeleteAccount />} />
+          <Route path="/home/userdetails" element={<UserDetails />} />
         </Route>
       </Routes>
       <ToastContainer />
