@@ -15,7 +15,7 @@ const Logout = () => {
     console.log(results);
     if (results.data.success) {
       toast.success("Logged out successfully");
-      navigate("/login");
+      navigate("/land/login");
     }
   };
   const handleCancel = async () => {

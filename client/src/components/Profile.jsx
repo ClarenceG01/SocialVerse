@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Profile = () => {
   const location = useLocation();
@@ -62,7 +63,7 @@ const Profile = () => {
           if (response.data?.message.includes("User created successfully")) {
             toast.success("Registration successfull");
             setTimeout(() => {
-              navigate("/login");
+              navigate("/land/login");
             }, 5000);
           } else if (
             response.data?.originalError.info.message.includes(
@@ -104,8 +105,14 @@ const Profile = () => {
       console.log(error);
     }
   };
+  const goBack = () => {
+    window.history.back();
+  };
   return (
     <div className="profile-page">
+      <div className="back">
+        <ArrowBackIcon color="blue" onClick={goBack} />
+      </div>
       <form className="profile-form" onSubmit={handleSubmit}>
         <label>
           Add Username

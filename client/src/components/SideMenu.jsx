@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate, Outlet, useLocation } from "react-router-dom";
 import logo from "../images/logo.png";
 import { ImHome3 } from "react-icons/im";
@@ -12,6 +12,7 @@ import { IoMdSettings } from "react-icons/io";
 const SideMenu = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [theme, setTheme] = useState("light");
   const logoClick = () => {
     if (location.pathname === "/home") {
       window.location.reload();
@@ -26,8 +27,11 @@ const SideMenu = () => {
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
+  const handleThemeToggle = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
   return (
-    <div className="Sidemenu-component">
+    <div className={`Sidemenu-component ${theme}`}>
       <div className="sv-logo" onClick={logoClick}>
         <img src={logo} alt="logo" />
       </div>
@@ -93,6 +97,11 @@ const SideMenu = () => {
           />
           <span className="navlink-word">Create Post</span>
         </NavLink>
+      </div>
+      <div className="theme-toggle">
+        <button onClick={handleThemeToggle}>
+          Toggle Theme ({theme === "light" ? "Dark" : "Light"})
+        </button>
       </div>
     </div>
   );

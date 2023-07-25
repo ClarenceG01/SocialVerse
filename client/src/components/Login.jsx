@@ -34,11 +34,11 @@ const Login = () => {
         }, 5000);
       }
     } catch (error) {
-      // if (error.response.status === 401) {
-      //   toast.error("Invalid Credentials");
-      // } else if (error.response.status === 404) {
-      //   toast.error("User not found");
-      // }
+      if (error.response.status === 401) {
+        toast.error("Invalid Credentials");
+      } else if (error.response.status === 404) {
+        toast.error("User not found");
+      }
       console.log(error);
     }
   };

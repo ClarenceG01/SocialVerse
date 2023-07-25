@@ -48,7 +48,9 @@ const Extra = () => {
         toast.success("User followed");
         refreshFeed();
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     getFollowSuggestions();

@@ -32,7 +32,7 @@
 
 // export default App;
 
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignUp";
@@ -52,6 +52,7 @@ import Notifications from "./components/Notifications";
 import Search from "./components/Search";
 import Settings from "./components/settings";
 import ChangePassword from "./components/ChangePassword";
+import DeleteAccount from "./components/DeleteAccount";
 
 function App() {
   return (
@@ -60,8 +61,8 @@ function App() {
         <Route path="/" element={<LandingPage />}>
           <Route path="/" element={<SignUp />} />
           <Route path="/land/login" element={<Login />} />
+          <Route path="/land/profile" element={<Profile />} />
         </Route>
-        <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<Home />}>
           <Route path="/home/" element={<Feed />} />
           <Route path="/home/logout" element={<Logout />} />
@@ -75,6 +76,7 @@ function App() {
           <Route path="/home/search" element={<Search />} />
           <Route path="/home/settings" element={<Settings />} />
           <Route path="/home/changepassword" element={<ChangePassword />} />
+          <Route path="/home/deleteaccount" element={<DeleteAccount />} />
         </Route>
       </Routes>
       <ToastContainer />

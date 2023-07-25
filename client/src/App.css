@@ -39,7 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 100vh;
 }
 .title {
@@ -268,7 +268,7 @@
   height: 100vh;
 }
 .profile-form {
-  width: 35%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -785,6 +785,30 @@
 .setting-component::-webkit-scrollbar {
   display: none;
 }
+.all-settings {
+  height: 100vh;
+}
+.all-settings li {
+  list-style-type: none;
+  width: 100%;
+  height: fit-content;
+  background-color: var(--white_text);
+  margin: 1rem 0;
+  padding: 1rem 0;
+  font-family: "Inter Tight", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.all-settings li:hover {
+  background-color: var(--hover-faded-aqua);
+  transform: scale(1.01);
+  transition: all 0.1s ease-in-out;
+}
+.all-settings li span {
+  margin: 0 0 0 1rem;
+}
 /* ---------------------------------------CHANGE PASSWROD COMPONENT--------------------------- */
 .changepassword-component {
   display: flex;
@@ -793,6 +817,114 @@
   width: 80%;
   height: 100vh;
   overflow-y: scroll;
+}
+.changepassword-component::-webkit-scrollbar {
+  display: none;
+}
+/* ---------------------------------------------SEARCH COMPONENT-------------------------------------------------- */
+.search-component {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.search-component::-webkit-scrollbar {
+  display: none;
+}
+.search-input {
+  margin: 0 auto;
+  width: 70%;
+  height: 2rem;
+  padding: 0 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--blue);
+  background-color: var(--white_text);
+  color: var(--dark_text);
+}
+/* --------------------------------------------DELETE ACCOUNT COMPONENT--------------------------------------- */
+.delete-component {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.delete-component::-webkit-scrollbar {
+  display: none;
+}
+.delete-response {
+  margin: 3rem auto;
+  width: 70%;
+  height: 2rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.delete-response p {
+  font-family: "Inter Tight", sans-serif;
+  font-size: 1rem;
+}
+.delete-response span {
+  font-family: "Inter Tight", sans-serif;
+  font-size: 1rem;
+  color: var(--white_text);
+}
+.user-response {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 10rem;
+}
+.accept-delete {
+  background-color: rgb(253, 17, 17);
+  color: var(--white_text);
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit content;
+  min-width: 3rem;
+}
+.reject-delete {
+  background-color: rgb(19, 204, 19);
+  color: var(--white_text);
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  font-family: "Inter Tight", sans-serif;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit content;
+  min-width: 3rem;
+}
+.accept-delete:hover {
+  transform: scale(1.01);
+  transition: all 0.1s ease-in-out;
+}
+.reject-delete:hover {
+  transform: scale(1.01);
+  transition: all 0.1s ease-in-out;
 }
 /* media queries */
 @media screen and (max-width: 1200px) {
@@ -889,7 +1021,7 @@
     display: block;
     position: absolute;
     right: 1.5rem;
-    bottom: 3rem;
+    bottom: 4rem;
     z-index: 9999;
     color: #1976d2;
     font-size: 2rem;

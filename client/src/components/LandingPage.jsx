@@ -15,9 +15,8 @@ const LandingPage = () => {
           <div className="title">
             <h2>Welcome to Socialverse</h2>
             <p className="subtitle">
-              The ultimate social media platform designed
-              <br /> to connect, inspire, and empower individuals from around
-              the world.
+              The ultimate social media platform designed to connect, inspire,
+              and empower individuals from around the world.
             </p>
           </div>
         </div>

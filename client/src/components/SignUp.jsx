@@ -15,7 +15,7 @@ const SignUp = () => {
       full_name: Fullname,
       email: Email,
     };
-    navigate("/profile", { state: { user } });
+    navigate("/land/profile", { state: { user } });
   };
   return (
     <div className="signup-page">
