@@ -53,10 +53,12 @@ function CreatePost({ refreshFeed }) {
     <div className="createpost-component">
       <Avatar src={logo} />
       <form className="createpost-form" onSubmit={sendPost}>
+        <span id="createpost-title">What's Popping ?!</span>
         <textarea
           className="createpost-textarea"
           cols="33"
           onChange={(e) => setPost(e.target.value)}
+          placeholder="What's up"
           value={Post}
           required
         />

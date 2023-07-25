@@ -43,6 +43,7 @@ const SinglePost = ({ post }) => {
   const postClick = () => {
     navigate("/home/postcomments", { state: { post: post } });
   };
+  let value;
   useEffect(() => {
     checkLike();
   });
@@ -90,7 +91,11 @@ const SinglePost = ({ post }) => {
               ) : (
                 <AiOutlineLike className="like-icon" onClick={handleLike} />
               )}
-              <p className="likes">{LikeCount}</p>
+
+              <p className="likes">
+                {LikeCount}{" "}
+                {LikeCount === 1 ? (value = "like") : (value = "likes")}
+              </p>
             </div>
             <div className="comments">
               <NavLink className="navlink">
@@ -98,10 +103,15 @@ const SinglePost = ({ post }) => {
                   className="comment-icon"
                   onClick={handleComment}
                 />
-                <p className="comments">{post.comment_count}</p>
+                <p className="comments">
+                  {post.comment_count}{" "}
+                  {post.comment_count === 1
+                    ? (value = "comment")
+                    : (value = "comments")}
+                </p>
               </NavLink>
             </div>
-            {CommentComponent && <CreateComment />}
+            {CommentComponent && <CreateComment post={post} />}
           </div>
         </div>
       </div>

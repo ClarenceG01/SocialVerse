@@ -15,7 +15,7 @@ const SignUp = () => {
       full_name: Fullname,
       email: Email,
     };
-    navigate("/profile", { state: { user } });
+    navigate("/land/profile", { state: { user } });
   };
   return (
     <div className="signup-page">
@@ -50,7 +50,7 @@ const SignUp = () => {
         </div>
         <div className="signup-link">
           <p>
-            Already have an account? <NavLink to="/login">Log In</NavLink>
+            Already have an account? <NavLink to="/land/login">Log In</NavLink>
           </p>
         </div>
       </form>

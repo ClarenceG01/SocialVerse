@@ -23,9 +23,7 @@ const Userprofile = () => {
   const getFollowers = async () => {
     navigate("/followers");
   };
-  const editProfile = async () => {
-    navigate("/home/editprofile");
-  };
+
   useEffect(() => {
     getUserDetails();
   }, []);
@@ -41,15 +39,6 @@ const Userprofile = () => {
                   <p>{user.full_name}</p>
                   <p>@{user.username}</p>
                 </div>
-
-                <Button
-                  variant="outlined"
-                  size="small"
-                  type="submit"
-                  onClick={editProfile}
-                >
-                  Edit Profile
-                </Button>
               </div>
               <div className="user-details">
                 <p>{user.bio}</p>
