@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import SideMenu from "./SideMenu";
-import Extra from "./Extra";
+import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -28,8 +27,12 @@ const Logout = () => {
         Are you sure you want to log out of your account? <br />
         You will be able to log back in whenever you want.
       </p>
-      <button onClick={handleLogout}>Log out</button>
-      <button onClick={handleCancel}>Cancel</button>
+      <Button className="logout-btn" variant="outlined" onClick={handleLogout}>
+        Log out
+      </Button>
+      <Button className="cancel-btn" variant="outlined" onClick={handleCancel}>
+        Cancel
+      </Button>
     </div>
   );
 };

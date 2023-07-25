@@ -115,7 +115,7 @@
   border-radius: 0.6rem;
 }
 .input-container {
-  width: 75%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -123,11 +123,11 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
   color: var(--dark_text);
   font-family: "Inter Tight", sans-serif;
   font-size: 1rem;
-  margin: 0 0 0.5rem 0;
 }
 .input-container input {
   background-color: #fff;
@@ -315,6 +315,16 @@
 }
 .Feed-component::-webkit-scrollbar {
   display: none;
+}
+.no-posts {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.no-posts Button {
+  margin-top: 1rem;
 }
 /* --------------------------CREATE POST----------------------------- */
 .createpost-component {
@@ -570,10 +580,43 @@
 .analytics .counts {
   color: black;
 }
+.all-user-posts {
+  position: relative;
+}
+.delete-posts {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.delete-posts:hover {
+  color: rgb(248, 8, 8);
+  transition: 0.3s ease-in-out;
+}
 /* ------------------------------------LOGOUT-------------------------------- */
 .logout-component {
   width: 80%;
   margin: 1rem auto;
+}
+.cancel-btn {
+  background-color: rgb(19, 204, 19);
+  color: var(--white_text);
+}
+.cancel-btn:hover {
+  color: rgb(19, 204, 19);
+  transition: 0.1s ease-in-out;
+  background-color: rgb(19, 204, 19);
+}
+.logout-btn {
+  background-color: rgb(248, 8, 8);
+  color: rgb(248, 8, 8);
+}
+.logout-btn:hover {
+  color: rgb(248, 8, 8);
+  transition: 0.1s ease-in-out;
+  background-color: rgb(248, 8, 8);
+}
+.logout-component Button {
+  margin: 1rem 0.5rem;
 }
 /* ----------------------------------POST&COMMENTS---------------------------- */
 .PostComments-component {
@@ -672,10 +715,6 @@
   color: var(--dark_text);
 }
 
-::placeholder {
-  color: var(--white_text);
-}
-
 /* hide the placeholder text on focus */
 :focus::placeholder {
   text-indent: -999px;
@@ -769,9 +808,40 @@
   display: none;
 }
 .notification-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  height: fit-content;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
 }
-.Createpost-popup {
-  z-index: 9999;
+.single-notifications {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 1rem 0;
+  font-family: "Inter Tight", sans-serif;
+  font-size: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  background-color: var(--white_text);
+}
+.upper-cut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.notification-icon {
+  margin: 0 1rem;
+}
+.checkbox {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-right: 1rem;
+  cursor: pointer;
 }
 /* -----------------------------SETTINGS COMPONENT------------------------------- */
 .setting-component {
@@ -820,6 +890,18 @@
 }
 .changepassword-component::-webkit-scrollbar {
   display: none;
+}
+.changepwd-form {
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-radius: 0.6rem;
+}
+.changepwd-form input {
+  padding: 0.5rem 1rem;
 }
 /* ---------------------------------------------SEARCH COMPONENT-------------------------------------------------- */
 .search-component {
@@ -926,6 +1008,41 @@
   transform: scale(1.01);
   transition: all 0.1s ease-in-out;
 }
+/* ---------------------------------------------FOLLOWING COMPONENT----------------------- */
+.following-component {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 80%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.following-component::-webkit-scrollbar {
+  display: none;
+}
+.following-user {
+  background-color: var(--white_text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+.following-user .follow-button {
+  margin-right: 1rem;
+}
+.follow-button Button {
+  color: rgb(248, 8, 8);
+}
+.follow-button Button:hover {
+  color: var(--white_text);
+  background-color: rgb(248, 8, 8);
+  opacity: 0.5;
+}
+.user-details {
+  margin-left: 1rem;
+}
+
 /* media queries */
 @media screen and (max-width: 1200px) {
   .sv-logo {
@@ -950,6 +1067,24 @@
   }
   .Sidemenu-component {
     width: 4.2rem;
+  }
+  .logout-component {
+    width: 100%;
+  }
+  .Feed-component {
+    width: 100%;
+  }
+  .Extra-component {
+    width: 100%;
+  }
+  .Userprofile-component {
+    width: 100%;
+  }
+  .changepassword-component {
+    width: 100%;
+  }
+  .search-component {
+    width: 100%;
   }
 }
 @media screen and (max-width: 1000px) {

@@ -34,8 +34,10 @@ async function markAsRead(req, res, next) {
         .request()
         .input("notify_id", notify_id)
         .execute("setSeenBy");
-      console.log(results);
-      res.json(results);
+      res.status(200).json({
+        message: "Notifications retrieved",
+        results: results.recordset,
+      });
     } else {
       res.status(500).json({
         success: false,
@@ -46,4 +48,27 @@ async function markAsRead(req, res, next) {
     console.log(error);
   }
 }
-module.exports = { getUserNotifications, markAsRead };
+async function markAllAsRead(req, res, next) {
+  try {
+    const { pool } = req;
+    const user_id = req.session?.user.user_id;
+    if (pool.connected) {
+      const results = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("MarkAllNotificationsAsRead");
+      res.status(200).json({
+        message: "Notifications retrieved",
+        results: results.recordset,
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Internal server error",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { getUserNotifications, markAsRead, markAllAsRead };

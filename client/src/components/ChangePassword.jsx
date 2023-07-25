@@ -50,8 +50,8 @@ const ChangePassword = () => {
       <div className="back">
         <ArrowBackIcon color="blue" onClick={goBack} />
       </div>
-      <h1>Changepassword</h1>
-      <form>
+      <h1>Change password</h1>
+      <form className="changepwd-form">
         <input
           type="password"
           placeholder="Old password"

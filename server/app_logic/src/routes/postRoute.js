@@ -17,7 +17,7 @@ postRoute.get("/userpost", authorizeSession, getUserPosts);
 postRoute.get("/allposts", authorizeSession, getAllPosts);
 postRoute.get("/followingposts", authorizeSession, getFeedPosts);
 postRoute.get("/singlepost/:id", authorizeSession, getSinglePost);
-postRoute.delete("/deletepost", authorizeSession, deletePost);
+postRoute.delete("/deletepost/:post_id", authorizeSession, deletePost);
 postRoute.post("/createpost", authorizeSession, createPost);
 postRoute.post("/likepost", authorizeSession, likePost);
 postRoute.post("/checklike", authorizeSession, checkLike);

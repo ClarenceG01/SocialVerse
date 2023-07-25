@@ -60,7 +60,7 @@ async function followCount(req, res, next) {
 async function unfollowUser(req, res, next) {
   try {
     const { pool } = req;
-    const { followed_id } = req.body;
+    const { followed_id } = req.params;
     const user_id = req.session?.user.user_id;
     if (pool.connected) {
       let results = await pool
@@ -103,4 +103,47 @@ async function notFollowed(req, res, next) {
     console.log(error);
   }
 }
-module.exports = { followUser, followCount, unfollowUser, notFollowed };
+async function allUserDetails(req, res, next) {
+  try {
+    const { pool } = req;
+    const { user_id } = req.params;
+    if (pool.connected) {
+      let posts = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("GetUserPosts");
+      let followers = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("GetFollowers");
+      let following = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("GetFollowingUsers");
+      let user_profile = await pool
+        .request()
+        .input("user_id", user_id)
+        .execute("userProfile");
+      res.status(200).json({
+        message: "All user details retrieved",
+        posts: posts.recordset,
+        followers: followers.recordset,
+        following: following.recordset,
+        user_details: user_profile.recordset,
+      });
+    } else {
+      res.status(500).json({
+        message: "Server error",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = {
+  followUser,
+  followCount,
+  unfollowUser,
+  notFollowed,
+  allUserDetails,
+};
