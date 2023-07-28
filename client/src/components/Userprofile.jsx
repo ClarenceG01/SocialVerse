@@ -43,7 +43,7 @@ const Userprofile = () => {
                 <div className="right">
                   <Avatar src={user.profile_picture} />
                   <p>{user.full_name}</p>
-                  <p>@{user.following_count}</p>
+                  <p>@{user.username}</p>
                 </div>
               </div>
               <div className="user-details">

@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AiFillEyeInvisible } from "react-icons/ai";
+import Button from "@mui/material/Button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 
 const Profile = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const Profile = () => {
   const [ProfileImage, setProfileImage] = useState("");
   const [Username, setUsername] = useState("");
   const [Bio, setBio] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const uploadImage = (files) => {
     const formData = new FormData();
@@ -42,6 +44,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      setIsLoading(true);
       if (Password !== Confirmpassword) {
         toast.error("Passwords do not match");
       } else {
@@ -103,6 +106,8 @@ const Profile = () => {
       //   navigate("/login");
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
   const goBack = () => {
@@ -120,6 +125,7 @@ const Profile = () => {
             type="text"
             value={Username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter Username"
             required
           />
         </label>
@@ -130,8 +136,8 @@ const Profile = () => {
             value={Password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Enter Password"
           />
-          <AiFillEyeInvisible className="eye-icon" />
         </label>
 
         <label className="password-input">
@@ -140,9 +146,9 @@ const Profile = () => {
             type="password"
             value={Confirmpassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
             required
           />
-          <AiFillEyeInvisible className="eye-icon" />
         </label>
         <label>
           Add Bio
@@ -152,22 +158,31 @@ const Profile = () => {
             rows="5"
             cols="33"
             value={Bio}
+            placeholder="Enter Bio"
             onChange={(e) => setBio(e.target.value)}
           />
         </label>
-        <label>
+        <input
+          type="file"
+          id="myFile"
+          name="filename"
+          accept="image/png, image/jpeg,image/jpg"
+          onChange={(e) => uploadImage(e.target.files)}
+          hidden
+        />
+        <label htmlFor="myFile">
           Upload Profile Picture
-          <input
-            type="file"
-            id="myFile"
-            name="filename"
-            accept="image/png, image/jpeg,image/jpg"
-            onChange={(e) => uploadImage(e.target.files)}
+          <AddPhotoAlternateOutlinedIcon
+            sx={{ color: "rgb(25,118,210)" }}
+            className="upload-icon"
           />
         </label>
         <div className="profile-button">
-          <button>Submit</button>
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
         </div>
+        {isLoading && <i className="fa-light fa-spinner fa-spin"></i>}
       </form>
       <ToastContainer />
     </div>

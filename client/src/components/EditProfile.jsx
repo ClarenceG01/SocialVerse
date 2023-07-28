@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Button from "@mui/material/Button";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -100,7 +101,7 @@ const EditProfile = () => {
         <ArrowBackIcon color="blue" onClick={goBack} />
       </div>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input-div">
           <label htmlFor="fullname">Fullname</label>
           <input
             type="text"
@@ -110,16 +111,16 @@ const EditProfile = () => {
             onChange={handleFullnameChange}
           />
         </div>
-        <div>
+        <div className="input-div">
           <label htmlFor="bio">Bio</label>
           <textarea
-            id="bio"
+            id="bio-update"
             placeholder="Enter your bio"
             value={Bio}
             onChange={handleBioChange}
           ></textarea>
         </div>
-        <div>
+        <div className="input-div">
           <label htmlFor="profilePicture">Profile Picture</label>
           <input
             type="file"
@@ -128,7 +129,9 @@ const EditProfile = () => {
             onChange={handleProfilePictureChange}
           />
         </div>
-        <button type="submit">Save</button>
+        <Button variant="contained" type="submit">
+          Save
+        </Button>
       </form>
     </div>
   );

@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Following = () => {
   const location = useLocation();
@@ -22,8 +23,14 @@ const Following = () => {
       toast.success("User unfollowed");
     }
   };
+  const goBack = () => {
+    window.history.back();
+  };
   return (
     <div className="following-component">
+      <div className="back">
+        <ArrowBackIcon color="blue" onClick={goBack} />
+      </div>
       {user.map((user) => {
         return (
           <div className="following-user">
