@@ -10,10 +10,12 @@ const Login = () => {
   // usestate
   const [credential, setCredential] = useState("");
   const [Password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   // function to handle submit
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      setIsLoading(true);
       const user_data = {
         email: credential,
         username: credential,
@@ -40,6 +42,8 @@ const Login = () => {
         toast.error("User not found");
       }
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -74,6 +78,7 @@ const Login = () => {
             Don't have an account? <NavLink to="/">Sign Up</NavLink>
           </p>
         </div>
+        {isLoading && <i className="fa-light fa-spinner fa-spin"></i>}
       </form>
       <ToastContainer />
     </div>

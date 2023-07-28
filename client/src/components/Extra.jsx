@@ -23,6 +23,9 @@ const Extra = () => {
     setSearchTerm(searchTerm);
     console.log(`after` + searchTerm);
     try {
+      if (searchTerm === "") {
+        setSearchResults([]);
+      }
       const response = await axios.get(
         `http://localhost:5050/search/${searchTerm}`,
         {
@@ -58,9 +61,6 @@ const Extra = () => {
   const refreshFeed = () => {
     getFollowSuggestions();
   };
-  const viewUser = () => {
-    navigate("/userprofile");
-  };
   return (
     <div className="Extra-component">
       <div className="searchInputWrapper">
@@ -88,6 +88,14 @@ const Extra = () => {
                     <p>@{account.username}</p>
                   </div>
                 </div>
+                <Button
+                  className="follow-button"
+                  variant="contained"
+                  size="small"
+                  onClick={() => handleFollow(account.user_id)}
+                >
+                  Follow
+                </Button>
               </div>
             );
           })
@@ -99,7 +107,7 @@ const Extra = () => {
           return (
             <div>
               <div className="suggested-user">
-                <div onClick={viewUser} className="suggested-user-details">
+                <div className="suggested-user-details">
                   <Avatar src={account.profile_picture} alt="User dp" />
                   <div className="details">
                     <p>{account.full_name}</p>

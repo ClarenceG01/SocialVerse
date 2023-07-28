@@ -92,7 +92,9 @@
 .nav li {
   margin: 0 1rem;
 }
-
+.join-socialverse {
+  display: none;
+}
 /* -------------------------------SIGNUP PAGE--------------------------- */
 .signup-page {
   background-color: var(--main);
@@ -282,6 +284,31 @@
   width: 75%;
   display: flex;
   flex-direction: column;
+}
+.profile-page label {
+  font-family: "Inter Tight", sans-serif;
+  margin-bottom: 1rem;
+}
+.profile-page input {
+  font-family: "Inter Tight", sans-serif;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  border: none;
+}
+.profile-page textarea {
+  font-family: "Inter Tight", sans-serif;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+}
+.profile-page Button:hover {
+  background-color: var(--hover);
+}
+.profile-button {
+  margin-bottom: 0.5rem;
+}
+.fa-light {
+  color: var(--blue);
+  font-size: 2rem;
 }
 /* -------------------------HOME----------------------- */
 .Home-component {
@@ -645,6 +672,31 @@
 }
 .EditProfile-component::-webkit-scrollbar {
   display: none;
+}
+.EditProfile-component form {
+  margin: 2rem auto;
+  padding: 1rem;
+}
+.input-div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+.input-div label {
+  font-family: "Inter Tight", sans-serif;
+  margin-bottom: 0.5rem;
+}
+.input-div input {
+  font-family: "Inter Tight", sans-serif;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  border: none;
+}
+#bio-update {
+  font-family: "Inter Tight", sans-serif;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  border: none;
 }
 /* -----------------------------------------------CREATE COMMENT -------------------------------- */
 .createcomment-box {
@@ -1163,5 +1215,22 @@
   }
   .sv-logo {
     display: none;
+  }
+  .LandingPage-component {
+    display: flex;
+    flex-direction: column;
+  }
+  .join-socialverse {
+    margin-top: 1rem;
+    display: block;
+    color: var(--white_text);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-align: center;
+    font-family: "Inter Tight", sans-serif;
+  }
+  .join-socialverse:hover {
+    color: var(--hover);
+    transition: 0.3s ease-in-out;
   }
 }

@@ -4,6 +4,13 @@ import "../App.css";
 import { Outlet } from "react-router-dom";
 
 const LandingPage = () => {
+  const goBottom = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="LandingPage-component">
       <div className="main-container">
@@ -18,6 +25,9 @@ const LandingPage = () => {
               The ultimate social media platform designed to connect, inspire,
               and empower individuals from around the world.
             </p>
+            <div className="join-socialverse" onClick={goBottom}>
+              Join SocialVerse
+            </div>
           </div>
         </div>
       </div>
